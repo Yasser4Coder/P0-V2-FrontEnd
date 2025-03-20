@@ -1,0 +1,14 @@
+.nt-ltr {
+  animation: ltr 0.5s ease-in-out forwards;
+}
+
+@keyframes ltr {
+  from {
+    right: -20%;
+    opacity: 0;
+  }
+  to {
+    right: 10%;
+    opacity: 1;
+  }
+}
