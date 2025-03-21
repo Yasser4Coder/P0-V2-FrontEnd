@@ -1,9 +1,37 @@
 import { Send } from "lucide-react";
+import { useState } from "react";
+import axios from "axios";
 
 const NotificationsTab = () => {
+  const [massege, setMassege] = useState("");
+  const [result, setResult] = useState("");
+  const [errColor, seterrColor] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/api/notifications/send", {
+        message: massege,
+      });
+      seterrColor("text-green-500");
+      setResult("Notification sent successfully");
+      setTimeout(() => {
+        setResult("");
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+      seterrColor("text-red-500");
+      setResult("Failed to send notification");
+      setTimeout(() => {
+        setResult("");
+      }, 3000);
+    }
+  };
   return (
     <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow-md">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md"
+      >
         <h2 className="text-xl font-semibold mb-4">Send Notifications</h2>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -12,7 +40,6 @@ const NotificationsTab = () => {
           <input
             type="text"
             className="w-full p-2 border border-gray-300 rounded-md"
-            value={""}
             placeholder="Notification title"
           />
         </div>
@@ -23,28 +50,24 @@ const NotificationsTab = () => {
           <textarea
             rows="3"
             className="w-full p-2 border border-gray-300 rounded-md"
-            value=""
             placeholder="Type your notification message here..."
+            onChange={(e) => setMassege(e.target.value)}
           ></textarea>
+          {result && (
+            <h1 className={`block text-sm font-medium ${errColor} mb-1`}>
+              {result}
+            </h1>
+          )}
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Recipients
-          </label>
-          <select
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value=""
-          >
-            <option value="all">All Users</option>
-            <option value="active">Active Participants</option>
-            <option value="inactive">Inactive Users</option>
-          </select>
-        </div>
-        <button className="flex items-center justify-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+
+        <button
+          type="submit"
+          className=" cursor-pointer items-center justify-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+        >
           <Send className="w-4 h-4" />
           <span>Send Notification</span>
         </button>
-      </div>
+      </form>
 
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Notification History</h2>

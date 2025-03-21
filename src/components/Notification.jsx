@@ -9,10 +9,15 @@ const Notification = () => {
   const [notification, setNotification] = useState(() => {
     return localStorage.getItem("notification") || "";
   });
+  const [notificationTime, setNotificationTime] = useState(() => {
+    return localStorage.getItem("notificationTime") || "";
+  });
 
   const handleClick = () => {
     setNotification("");
+    setNotificationTime("");
     localStorage.removeItem("notification");
+    localStorage.removeItem("notificationTime");
   };
 
   const sound = new Howl({
@@ -22,8 +27,10 @@ const Notification = () => {
 
   useEffect(() => {
     socket.on("notification", (message) => {
-      setNotification(message);
-      localStorage.setItem("notification", message); // Save in localStorage
+      setNotification(message.message);
+      setNotificationTime(message.timestamp);
+      localStorage.setItem("notification", message.message); // Save in localStorage
+      localStorage.setItem("notificationTime", message.timestamp); // Save in localStorage
     });
 
     return () => {
@@ -51,6 +58,9 @@ const Notification = () => {
             className="absolute right-[1%] top-[10%] text-3xl text-[#00B2FF] cursor-pointer"
           >
             <IoCloseCircle />
+          </div>
+          <div className="absolute right-[1%] bottom-[2%] text-xs text-white">
+            {notificationTime}
           </div>
           <div className="  w-full bg-[#6F6E6E] rounded-tl-2xl text-white h-full top-0 px-[20px] max-w-[400px] py-[30px]">
             {notification}
