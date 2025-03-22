@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./pages/404";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Layout from "./Layout";
 import Dlayout from "./Dlayout";
 import DashboardTab from "./pages/dashboard/DashboardTab";
