@@ -15,7 +15,32 @@
 
 .blur-background {
   width: 100%;
-  background: rgba(255, 255, 255, 0.153); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.153); /* Semi-transparent background */
   backdrop-filter: blur(8px); /* Blur effect */
   -webkit-backdrop-filter: blur(8px); /* Safari support */
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
 }

@@ -1,6 +1,31 @@
 @import "tailwindcss";
 
 @import "tailwindcss";
+/* url('/fonts/SulphurPoint-Regular.otf') */
+@font-face {
+  font-family: "SulphurPoint";
+  src: url("/fonts/SulphurPoint-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SulphurPoint";
+  src: url("/fonts/SulphurPoint-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SulphurPoint";
+  src: url("/fonts/SulphurPoint-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-sulphur {
+  font-family: "SulphurPoint", sans-serif;
+}
 
 @theme {
   --container-padding: 1rem;

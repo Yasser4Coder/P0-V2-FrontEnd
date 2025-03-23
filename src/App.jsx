@@ -9,6 +9,8 @@ import UsersTab from "./pages/dashboard/UsersTab";
 import ChallengesTab from "./pages/dashboard/ChallengesTab";
 import SubmissionsTab from "./pages/dashboard/SubmissionsTab";
 import NotificationsTab from "./pages/dashboard/NotificationsTab";
+import Login from "./pages/login/Login";
+import Welcome from "./pages/welcome/Welcome";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         {/* Main Layout Routes */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="welcome" element={<Welcome />} />
           <Route path="404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>

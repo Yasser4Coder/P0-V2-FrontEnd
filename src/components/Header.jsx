@@ -10,7 +10,7 @@ const Header = () => {
     setToggle(!toggle);
   };
   return (
-    <div className="blur-background py-[15px] flex flex-col items-center">
+    <div className="blur-background relative z-50 py-[7px] flex flex-col items-center">
       <div className="flex container mx-auto justify-between items-center">
         <div>
           <img src={logo} alt="" />
