@@ -16,7 +16,7 @@ const Header = () => {
           <img src={logo} alt="" />
         </div>
         <div className="flex items-center gap-[30px] sm:gap-[60px]">
-          <div className="text-white hidden sm:flex text-[14px] gap-[40px]">
+          <div className="text-white hidden font-sulphur sm:flex text-[14px] gap-[40px]">
             <Link>Home</Link>
             <Link>Scoreboard</Link>
             <Link>Verses</Link>

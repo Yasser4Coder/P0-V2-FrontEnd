@@ -15,7 +15,7 @@
 
 .blur-background {
   width: 100%;
-  background: rgba(0, 0, 0, 0.153); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.317); /* Semi-transparent background */
   backdrop-filter: blur(8px); /* Blur effect */
   -webkit-backdrop-filter: blur(8px); /* Safari support */
 }

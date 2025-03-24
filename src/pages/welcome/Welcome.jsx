@@ -1,16 +1,23 @@
-import React from "react";
-import bgimg from "../../assets/bgs/Welcome Page.png";
+import React, { useEffect, useState } from "react";
+import bgimg from "../../assets/gif/welcom.gif";
+import bgimgFix from "../../assets/bgs/Welcome Page.png";
 import Frame from "../../components/Frame";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import WorningTitle from "../../components/WorningTitle";
 
 const Welcome = () => {
+  const [fixBg, setFixBg] = useState(bgimg);
+  useEffect(() => {
+    setTimeout(() => {
+      setFixBg(bgimgFix);
+    }, 4000);
+  });
   const handleClick = () => {};
   return (
     <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-65px)]">
       <img
-        src={bgimg}
+        src={fixBg}
         alt=""
         className="z-0 fixed w-full h-full bg-center bg-cover top-0 left-0 object-cover"
       />
