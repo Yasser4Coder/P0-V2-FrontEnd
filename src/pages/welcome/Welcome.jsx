@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import bgimg from "../../assets/gif/welcom.gif";
+import bgimg from "../../assets/gif/welcom.webp";
 import bgimgFix from "../../assets/bgs/Welcome Page.png";
 import Frame from "../../components/Frame";
 // eslint-disable-next-line no-unused-vars

@@ -1,5 +1,5 @@
 // import footerimg from "../../../assets/images/Image.png";
-import bgimg from "../../../assets/gif/Section.gif";
+import bgimg from "../../../assets/gif/Section.webp";
 import charcter from "../../../assets/images/solo_leveling_statue_of_god_by_gisamadesing_dfagw82-414w-2x 1.png";
 import { useEffect, useState } from "react";
 // eslint-disable-next-line no-unused-vars
