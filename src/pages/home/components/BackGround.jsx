@@ -39,11 +39,6 @@ const BackGround = ({ character, todark }) => {
         alt=""
         className={`fixed duration-800 ease-out transition-all top-[70%] sm:top-[60%] ${side} translate-x-[-50%] translate-y-[-50%]`}
       />
-      {/* <img
-        src={footerimg}
-        alt=""
-        className="fixed z-0 left-0 bottom-0 w-full h-[11%]"
-      /> */}
     </div>
   );
 };
