@@ -11,16 +11,21 @@ import SubmissionsTab from "./pages/dashboard/SubmissionsTab";
 import NotificationsTab from "./pages/dashboard/NotificationsTab";
 import Login from "./pages/login/Login";
 import Welcome from "./pages/welcome/Welcome";
+import ScoreBoard from "./pages/scoreboard/ScoreBoard";
+import Teams from "./pages/dashboard/teams";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         {/* Main Layout Routes */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="welcome" element={<Welcome />} />
+          <Route path="scoreboard" element={<ScoreBoard />} />
           <Route path="404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>
@@ -32,6 +37,7 @@ function App() {
           <Route path="challenges" element={<ChallengesTab />} />
           <Route path="submissions" element={<SubmissionsTab />} />
           <Route path="notifications" element={<NotificationsTab />} />
+          <Route path="teams" element={<Teams />} />
           <Route path="404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>

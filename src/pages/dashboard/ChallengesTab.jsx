@@ -1,114 +1,116 @@
-import { Edit, Trash, Eye, Plus } from "lucide-react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";     
 
-const ChallengesTab = () => {
+const AddChallengeForm = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [file, setFile] = useState(null);
+
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("points", data.points);
+    formData.append("category", data.category);
+    formData.append("hints", data.hints);
+    formData.append("attechmentFile", file);
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/challenges", {
+        method: "POST",
+        body: formData,
+      });
+  
+      const textResponse = await response.text(); // استلام الاستجابة على شكل نص
+      console.log("Response Text:", textResponse);
+  
+      // الآن إذا كانت الاستجابة بنجاح، نحاول تحويلها إلى JSON
+      if (response.ok) {
+        const result = JSON.parse(textResponse); // تحويل النص إلى JSON
+        toast.success("تم إضافة التحدي بنجاح!");
+      } else {
+        toast.error(textResponse || "حدث خطأ أثناء الإرسال");
+      }
+    } catch (error) {
+      console.error("❌ خطأ أثناء الإرسال:", error);
+      toast.error("حدث خطأ غير متوقع");
+    }
+  };
+  
+  // التعامل مع تغيير الملف
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Add New Challenge</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Title
-            </label>
-            <input
-              type="text"
-              className="w-full p-2 border border-gray-300 rounded-md"
-              value=""
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Deadline
-            </label>
-            <input
-              type="date"
-              className="w-full p-2 border border-gray-300 rounded-md"
-              value=""
-            />
-          </div>
-        </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Description
-          </label>
-          <textarea
-            rows="3"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value=""
-          ></textarea>
-        </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Status
-          </label>
-          <select
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value=""
-          >
-            <option value="active">Active</option>
-            <option value="draft">Draft</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
-        <button className="flex items-center justify-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-          <Plus className="w-4 h-4" />
-          <span>Add Challenge</span>
-        </button>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+        <input
+          type="text"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          {...register("title", { required: true })}
+        />
+        {errors.title && <span>Title is required</span>}
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Challenges List</h2>
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Title
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Deadline
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Participants
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">title</td>
-                <td className="px-6 py-4 whitespace-nowrap">deadline</td>
-                <td className="px-6 py-4 whitespace-nowrap">participants</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span
-                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full `}
-                  >
-                    status
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button className="text-indigo-600 hover:text-indigo-900 mr-2">
-                    <Eye className="w-5 h-5" />
-                  </button>
-                  <button className="text-yellow-600 hover:text-yellow-900 mr-2">
-                    <Edit className="w-5 h-5" />
-                  </button>
-                  <button className="text-red-600 hover:text-red-900">
-                    <Trash className="w-5 h-5" />
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+        <textarea
+          rows="3"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          {...register("description", { required: true })}
+        />
+        {errors.description && <span>Description is required</span>}
       </div>
-    </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Points</label>
+        <input
+          type="number"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          {...register("points", { required: true })}
+        />
+        {errors.points && <span>Points are required</span>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+        <input
+          type="text"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          {...register("category", { required: true })}
+        />
+        {errors.category && <span>Category is required</span>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Hints</label>
+        <textarea
+          rows="2"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          {...register("hints")}
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Attachment</label>
+        <input
+          type="file"
+          accept=".jpg,.png,.pdf,.docx"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          onChange={handleFileChange}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+      >
+        Add Challenge
+      </button>
+    </form>
   );
 };
 
-export default ChallengesTab;
+export default AddChallengeForm;

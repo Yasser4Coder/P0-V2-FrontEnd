@@ -18,7 +18,7 @@ const Header = () => {
         <div className="flex items-center gap-[30px] sm:gap-[60px]">
           <div className="text-white hidden font-sulphur sm:flex text-[14px] gap-[40px]">
             <Link>Home</Link>
-            <Link>Scoreboard</Link>
+            <Link to={"/scoreboard"}>Scoreboard</Link>
             <Link>Verses</Link>
           </div>
           <div onClick={handleClick} className="block sm:hidden">
@@ -34,7 +34,7 @@ const Header = () => {
           } origin-top`}
         >
           <Link>Home</Link>
-          <Link>Scoreboard</Link>
+          <Link to={"/scoreboard"}>Scoreboard</Link>
           <Link>Verses</Link>
         </div>
       )}
