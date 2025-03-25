@@ -5,6 +5,8 @@ import Frame from "../../components/Frame";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import WorningTitle from "../../components/WorningTitle";
+import Button from "../../components/Button";
+import Peragraph from "../../components/Peragraph";
 
 const Welcome = () => {
   const [fixBg, setFixBg] = useState(bgimg);
@@ -13,9 +15,8 @@ const Welcome = () => {
       setFixBg(bgimgFix);
     }, 4000);
   });
-  const handleClick = () => {};
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-65px)]">
+    <div className="flex flex-col items-center justify-center w-full mt-[60px]">
       <img
         src={fixBg}
         alt=""
@@ -31,18 +32,13 @@ const Welcome = () => {
           extraEdit={`flex flex-col duration-2000 ease-out transition-all py-[60px] gap-[40px] px-[15px] items-center justify-center`}
         >
           <WorningTitle icon={true} title={"WELCOME TO PROJECT 0"} />
-          <p className="text-white font-sulphur leading-[2.5rem] text-center text-2xl tracking-[0.4rem]">
+          <Peragraph>
             the system is activated discover the <br /> challenges waiting for
             you in the gates <br /> you will play agaisnt time and hard <br />
             challenges but before that you have to <br /> choose your character
             in the team
-          </p>
-          <div
-            onClick={handleClick}
-            className="border-[1px] border-white text-white font-sulphur text-center p-[15px] flex items-center justify-center cursor-pointer text-2xl tracking-[0.4rem]"
-          >
-            Next
-          </div>
+          </Peragraph>
+          <Button>Next</Button>
         </Frame>
       </motion.div>
     </div>

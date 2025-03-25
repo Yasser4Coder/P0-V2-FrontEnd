@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import WorningTitle from "../../components/WorningTitle";
 import BackGround from "./components/BackGround";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
+import Peragraph from "../../components/Peragraph";
 const Home = () => {
   const [showFrame, setShowFrame] = useState(false);
   const [character, setCharacter] = useState(false);
@@ -26,11 +28,11 @@ const Home = () => {
     }, 800);
   };
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-65px)]">
+    <div className="flex flex-col items-center justify-center w-full mt-[60px]">
       <BackGround character={character} />
       {showFrame && (
         <motion.div
-          className="w-full"
+          className="w-full h-full"
           initial={{ opacity: 0, y: 50 }} // Start position
           animate={{ opacity: 1, y: 0 }} // End position
           transition={{ duration: 0.8, ease: "easeOut" }} // Smooth animation
@@ -41,17 +43,12 @@ const Home = () => {
             } items-center justify-center`}
           >
             <WorningTitle icon={true} title={"Are you brave enough!!"} />
-            <p className="text-white font-sulphur leading-[2.5rem] text-center text-2xl tracking-[0.4rem]">
+            <Peragraph>
               you had a second awaking from now <br /> you can level up your
               strength <br /> intelligence, but !! <br /> are you brave enough
               to do it ?
-            </p>
-            <div
-              onClick={handleClick}
-              className="border-[1px] border-white text-white font-sulphur text-center p-[15px] flex items-center justify-center cursor-pointer text-2xl tracking-[0.4rem]"
-            >
-              Yes i’m
-            </div>
+            </Peragraph>
+            <Button click={handleClick}>Yes i’m</Button>
           </Frame>
         </motion.div>
       )}

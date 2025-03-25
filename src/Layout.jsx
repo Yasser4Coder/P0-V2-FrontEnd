@@ -7,7 +7,7 @@ const Layout = () => {
     <div>
       <Notification />
       <Header />
-      <div className="container mx-auto">
+      <div className="container min-h-[50vh] mx-auto">
         <Outlet />
       </div>
     </div>

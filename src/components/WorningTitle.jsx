@@ -1,17 +1,50 @@
+import React from "react";
 import exclamation from "../assets/icons/exclamation.svg";
 
-const WorningTitle = ({ title, icon, extraStyle }) => {
+const WarningTitle = ({ title, icon = true, extraStyle = "" }) => {
   return (
-    <div className="flex items-center gap-[20px]">
+    <div className="flex items-center gap-[10px] sm:gap-[20px] 2xl:w-[54%]">
       {icon && (
-        <div className="border-[1px] border-white p-[5px]">
-          <img src={exclamation} alt="" width={60} />
+        <div
+          className="
+          border border-white 
+          flex items-center justify-center 
+          h-[70.85px] 
+          w-[70.85px] 
+          flex-shrink-0
+        "
+        >
+          <img
+            src={exclamation}
+            alt="Warning Icon"
+            className="w-10 h-10 object-contain"
+          />
         </div>
       )}
       <div
-        className={`border-[1px] ${extraStyle} font-sulphur tracking-[0.4rem] text-white flex items-center justify-center px-[15px] border-white h-[70.85px]`}
+        className={`
+          border border-white 
+          flex-grow 
+          flex items-center justify-center 
+          h-[70.85px]
+          px-[15px]
+          ${extraStyle}
+        `}
       >
-        <h1 className="text-4xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]">
+        <h1
+          className="
+          lg:text-4xl
+          md:text-3xl
+          sm:text-2xl
+          text-md
+          font-bold 
+          text-white 
+          text-center 
+          tracking-[0.4rem] 
+          drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]
+          font-sulphur
+        "
+        >
           {title}
         </h1>
       </div>
@@ -19,4 +52,4 @@ const WorningTitle = ({ title, icon, extraStyle }) => {
   );
 };
 
-export default WorningTitle;
+export default WarningTitle;
