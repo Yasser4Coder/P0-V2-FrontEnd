@@ -14,7 +14,7 @@ import Welcome from "./pages/welcome/Welcome";
 import ScoreBoard from "./pages/scoreboard/ScoreBoard";
 import Teams from "./pages/dashboard/teams";
 import { Toaster } from "react-hot-toast";
-
+// mounir
 function App() {
   return (
     <BrowserRouter>
