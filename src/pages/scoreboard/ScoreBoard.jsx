@@ -40,7 +40,7 @@ const Home = () => {
       <img
         src={bg}
         alt=""
-        className="z-0 fixed w-full h-full bg-center bg-cover top-0 left-0 object-cover"
+        className="z-0 fixed w-full h-full bg-center top-0 left-0 bg-contain"
       />
       {showFrame && (
         <motion.div
@@ -68,7 +68,7 @@ const Home = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 20 }}
                       transition={{ duration: 2, type: "spring" }}
-                      className={`flex border-[1px] py-[13px] gap-[10%] border-white font-bold justify-center items-center 
+                      className={`flex border-[1px] py-[13px] gap-[10%] border-white font-bold justify-between px-[30px] items-center 
             ${
               index === 0
                 ? "w-full"
@@ -82,7 +82,9 @@ const Home = () => {
                       {index === 0 && <img src={first} alt="" />}
                       {index === 1 && <img src={secand} alt="" />}
                       {index === 2 && <img src={third} alt="" />}
-                      <p>{index + 1}</p>
+                      {
+                        index > 2 && <p>{index + 1}</p> // Show index for teams other than top 3
+                      }
                       <p>{team.teamName}</p>
                       <p>{team.points}</p>
                     </motion.div>
