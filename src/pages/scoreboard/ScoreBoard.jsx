@@ -30,7 +30,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowFrame(true);
-    }, 1500); // Show after 1 second
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
