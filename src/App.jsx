@@ -16,9 +16,9 @@ import Teams from "./pages/dashboard/teams";
 import Announcement from "./pages/announcement/announcement";
 import Gate from "./pages/gate/Gate";
 import { Toaster } from "react-hot-toast";
-// mounir
-// yasser
-////dsa/d/sda/das/d//ds/sad/as/d/as/d/as/d/as/
+import NotificationPage from "./pages/notitfication/NotificationPage";
+import Gates from "./pages/gates/Gates";
+
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +30,11 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="welcome" element={<Welcome />} />
           <Route path="scoreboard" element={<ScoreBoard />} />
+          <Route path="notification" element={<NotificationPage />} />
+          <Route path="gates" element={<Gates />} />
+          <Route path="scoreboard" element={<ScoreBoard />} />
+          <Route path="announcement" element={<Announcement />} />
+          <Route path="gate" element={<Gate />} />
           <Route path="404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>

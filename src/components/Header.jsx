@@ -19,7 +19,8 @@ const Header = () => {
           <div className="text-white hidden font-sulphur sm:flex text-[14px] gap-[40px]">
             <Link>Home</Link>
             <Link to={"/scoreboard"}>Scoreboard</Link>
-            <Link>Verses</Link>
+            <Link to={"/gates"}>Gates</Link>
+            <Link to={"/announcement"}>announcements</Link>
           </div>
           <div onClick={handleClick} className="block sm:hidden">
             <AiOutlineBars className="text-white text-4xl cursor-pointer" />
@@ -35,7 +36,8 @@ const Header = () => {
         >
           <Link>Home</Link>
           <Link to={"/scoreboard"}>Scoreboard</Link>
-          <Link>Verses</Link>
+          <Link to={"/gates"}>Gates</Link>
+          <Link to={"/announcement"}>announcements</Link>
         </div>
       )}
     </div>
