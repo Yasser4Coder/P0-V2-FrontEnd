@@ -14,6 +14,8 @@ import Welcome from "./pages/welcome/Welcome";
 import ScoreBoard from "./pages/scoreboard/ScoreBoard";
 import Teams from "./pages/dashboard/teams";
 import { Toaster } from "react-hot-toast";
+import NotificationPage from "./pages/notitfication/NotificationPage";
+import Gates from "./pages/gates/Gates";
 // mounir
 // yasser
 ////dsa/d/sda/das/d//ds/sad/as/d/as/d/as/d/as/
@@ -28,6 +30,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="welcome" element={<Welcome />} />
           <Route path="scoreboard" element={<ScoreBoard />} />
+          <Route path="notification" element={<NotificationPage />} />
+          <Route path="gates" element={<Gates />} />
           <Route path="404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>

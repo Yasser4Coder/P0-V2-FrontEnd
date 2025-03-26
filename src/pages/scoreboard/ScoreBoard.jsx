@@ -12,20 +12,20 @@ const Home = () => {
   const [showFrame, setShowFrame] = useState(false);
 
   const teams = [
-    { teamName: "D.CRAWLERS", points: 166.98 },
-    { teamName: "A.TEAM", points: 200.45 },
-    { teamName: "B.TEAM", points: 300.32 },
-    { teamName: "C.TEAM", points: 200.67 },
-    { teamName: "D.TEAM", points: 250.52 },
-    { teamName: "E.TEAM", points: 170.89 },
-    { teamName: "F.TEAM", points: 160.45 },
-    { teamName: "G.TEAM", points: 550.78 },
-    { teamName: "H.TEAM", points: 140.56 },
-    { teamName: "I.TEAM", points: 150.34 },
-    { teamName: "J.TEAM", points: 300.12 },
-    { teamName: "K.TEAM", points: 110.98 },
-    { teamName: "L.TEAM", points: 100.67 },
-    { teamName: "M.TEAM", points: 200.45 },
+    { teamName: "D.CRAWLERS", points: 180.25 },
+    { teamName: "A.TEAM", points: 210.5 },
+    { teamName: "B.TEAM", points: 320.75 },
+    { teamName: "C.TEAM", points: 220.9 },
+    { teamName: "D.TEAM", points: 360.65 },
+    { teamName: "E.TEAM", points: 280.45 },
+    { teamName: "F.TEAM", points: 170.3 },
+    { teamName: "G.TEAM", points: 360.8 },
+    { teamName: "H.TEAM", points: 550.6 },
+    { teamName: "I.TEAM", points: 660.4 },
+    { teamName: "J.TEAM", points: 310.2 },
+    { teamName: "K.TEAM", points: 120.95 },
+    { teamName: "L.TEAM", points: 110.75 },
+    { teamName: "M.TEAM", points: 210.55 },
   ];
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -67,7 +67,7 @@ const Home = () => {
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 20 }}
-                      transition={{ duration: 2, type: "spring" }}
+                      transition={{ duration: 4, type: "spring" }}
                       className={`flex border-[1px] py-[13px] gap-[10%] border-white font-bold justify-between px-[30px] items-center 
             ${
               index === 0

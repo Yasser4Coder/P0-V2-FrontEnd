@@ -1,29 +1,21 @@
-import React, { useEffect, useState } from "react";
-import bgimg from "../../assets/gif/welcom.webp";
-import bgimgFix from "../../assets/bgs/Welcome Page.png";
-import Frame from "../../components/Frame";
+import React, { useState } from "react";
+import fixBg from "../../assets/bgs/Welcome Page.png";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import Frame from "../../components/Frame";
 import WorningTitle from "../../components/WorningTitle";
 import Button from "../../components/Button";
 import Peragraph from "../../components/Peragraph";
 import { useNavigate } from "react-router-dom";
 
-const Welcome = () => {
-  const [fixBg, setFixBg] = useState(bgimg);
-  const [disapair, setDisapair] = useState(false);
+const NotificationPage = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFixBg(bgimgFix);
-    }, 4000);
-  });
+  const [disapair, setDisapair] = useState(false);
 
   const handleClick = () => {
     setDisapair(true);
     setTimeout(() => {
-      navigate("/notification");
+      navigate("/gates");
     }, 800);
   };
   return (
@@ -44,18 +36,30 @@ const Welcome = () => {
             disapair === true ? "-translate-x-[200%]" : ""
           } duration-2000 ease-out transition-all py-[60px] gap-[40px] px-[15px] items-center justify-center`}
         >
-          <WorningTitle icon={true} title={"WELCOME TO PROJECT 0"} />
+          <WorningTitle icon={true} title={"NOTIFICATION"} />
           <Peragraph>
-            the system is activated discover the <br /> challenges waiting for
-            you in the gates <br /> you will play agaisnt time and hard <br />
-            challenges but before that you have to <br /> choose your character
-            in the team
+            You're in the system now. <br /> Are you ready to move forward?
           </Peragraph>
-          <Button click={handleClick}>Next</Button>
+          <div className="flex items-center gap-[40px]">
+            <Button
+              click={() => navigate("/welcome")}
+              border="border-red-500"
+              text="text-red-500"
+            >
+              No
+            </Button>
+            <Button
+              click={handleClick}
+              border="border-green-500"
+              text="text-green-500"
+            >
+              Yes
+            </Button>
+          </div>
         </Frame>
       </motion.div>
     </div>
   );
 };
 
-export default Welcome;
+export default NotificationPage;
