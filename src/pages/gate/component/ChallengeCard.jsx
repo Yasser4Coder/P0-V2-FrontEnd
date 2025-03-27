@@ -15,26 +15,39 @@ const ChallengeCard = ({
 }) => {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
+  const [delayedSolved, setDelayedSolved] = useState(false); // New state for delayed application
+
   const navigate = useNavigate();
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShow(true);
-    }, 2000); // Delay of 1 second
+    if (solved) {
+      const timer = setTimeout(() => {
+        setShow(true);
+        setDelayedSolved(true); // Apply solved styles after delay
+      }, 2000);
 
-    const timer2 = setTimeout(() => {
-      setShow2(true);
-    }, 4500); // Delay of 1 second
-    return () => clearTimeout(timer2, timer);
-  }, []);
+      const timer2 = setTimeout(() => {
+        setShow2(true);
+      }, 4500);
+
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(timer2);
+      };
+    }
+  }, [solved]);
 
   return (
     <div
       className={`div${divNum} ${
+        delayedSolved &&
         solved === true &&
         (index === 1 || index === 3 || index === 5) &&
         show === true
           ? "blur-backgroundGateCard-green border-[#26CD87] drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
-          : solved === true && (index === 2 || index === 4) && show2 === true
+          : delayedSolved &&
+            solved === true &&
+            (index === 2 || index === 4) &&
+            show2 === true
           ? "blur-backgroundGateCard-green border-[#26CD87] drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
           : "blur-backgroundGateCard border-white"
       } font-sulphur relative rounded-2xl flex flex-col items-center justify-between py-[13px] px-[15px] border-3`}
