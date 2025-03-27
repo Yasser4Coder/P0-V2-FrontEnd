@@ -26,6 +26,12 @@
   backdrop-filter: blur(5px); /* Blur effect */
   -webkit-backdrop-filter: blur(8px); /* Safari support */
 }
+.blur-backgroundGateCard-green {
+  width: 100%;
+  background: rgba(41, 255, 25, 0.603); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Blur effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+}
 
 @keyframes shake {
   0% {
@@ -48,6 +54,29 @@
   }
 }
 
-.shake {
-  animation: shake 0.3s ease-in-out;
+.parent {
+  display: grid;
+  grid-template-columns: repeat(23, 1fr);
+  grid-template-rows: repeat(17, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div1 {
+  grid-area: 1 / 10 / 6 / 15;
+}
+.div2 {
+  grid-area: 3 / 19 / 8 / 24;
+}
+.div3 {
+  grid-area: 11 / 19 / 16 / 24;
+}
+.div4 {
+  grid-area: 3 / 1 / 8 / 6;
+}
+.div5 {
+  grid-area: 11 / 1 / 16 / 6;
+}
+.div6 {
+  grid-area: 12 / 9 / 18 / 16;
 }

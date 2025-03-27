@@ -23,12 +23,13 @@ function Announcement() {
       />
       {showFrame && (
         <motion.div
-          className="w-full"
+          className="w-full flex flex-col gap-[20px]"
           initial={{ opacity: 0, y: 50 }} // Start position
           animate={{ opacity: 1, y: 0 }} // End position
           transition={{ duration: 0.8, ease: "easeOut" }} // Smooth animation
         >
           {/* we will use the map function here after fetcing the data */}
+          <AnnouncementComp />
           <AnnouncementComp />
         </motion.div>
       )}

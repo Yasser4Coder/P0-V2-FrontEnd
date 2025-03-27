@@ -14,10 +14,10 @@ import Welcome from "./pages/welcome/Welcome";
 import ScoreBoard from "./pages/scoreboard/ScoreBoard";
 import Teams from "./pages/dashboard/teams";
 import Announcement from "./pages/announcement/announcement";
-import Gate from "./pages/gate/Gate";
 import { Toaster } from "react-hot-toast";
 import NotificationPage from "./pages/notitfication/NotificationPage";
 import Gates from "./pages/gates/Gates";
+import GateV2 from "./pages/gate/GateV2";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           <Route path="gates" element={<Gates />} />
           <Route path="scoreboard" element={<ScoreBoard />} />
           <Route path="announcement" element={<Announcement />} />
-          <Route path="gate" element={<Gate />} />
+          <Route path="gate" element={<GateV2 />} />
           <Route path="404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>
