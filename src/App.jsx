@@ -13,7 +13,7 @@ import Login from "./pages/login/Login";
 import Welcome from "./pages/welcome/Welcome";
 import ScoreBoard from "./pages/scoreboard/ScoreBoard";
 import Teams from "./pages/dashboard/teams";
-import Announcement from "./pages/announcement/announcement";
+import Announcement from "./pages/announcement/Announcement";
 import { Toaster } from "react-hot-toast";
 import NotificationPage from "./pages/notitfication/NotificationPage";
 import Gates from "./pages/gates/Gates";
