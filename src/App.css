@@ -22,13 +22,13 @@
 
 .blur-backgroundGateCard {
   width: 100%;
-  background: rgba(0, 0, 0, 0.543); /* Semi-transparent background */
+  background: rgba(35, 35, 35, 0.543); /* Semi-transparent background */
   backdrop-filter: blur(5px); /* Blur effect */
   -webkit-backdrop-filter: blur(8px); /* Safari support */
 }
 .blur-backgroundGateCard-green {
   width: 100%;
-  background: rgba(41, 255, 25, 0.603); /* Semi-transparent background */
+  background: #00fe984e; /* Semi-transparent background */
   backdrop-filter: blur(5px); /* Blur effect */
   -webkit-backdrop-filter: blur(8px); /* Safari support */
 }

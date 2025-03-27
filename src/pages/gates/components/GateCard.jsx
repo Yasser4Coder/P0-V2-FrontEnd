@@ -1,8 +1,10 @@
 import React from "react";
 import exclamation from "../../../assets/icons/exclamation.svg";
-import RedKnight from "../../../assets/images/RedKnight.jpg";
+import RedKnight from "../../../assets/images/boss.webp";
+import { useNavigate } from "react-router-dom";
 
 const GateCard = ({ title, desc, open }) => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-[320px] w-full relative">
       <img
@@ -59,6 +61,7 @@ const GateCard = ({ title, desc, open }) => {
           </div>
           <p className="text-white text-center mt-[25px] text-lg">{desc}</p>
           <button
+            onClick={() => navigate("/gate")}
             className={`border-[1px] mt-[25px] text-white border-white font-sulphur text-center p-[15px] flex items-center justify-center cursor-pointer lg:text-xl
               md:text-lg
               sm:text-md
