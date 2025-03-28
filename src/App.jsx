@@ -18,7 +18,9 @@ import { Toaster } from "react-hot-toast";
 import NotificationPage from "./pages/notitfication/NotificationPage";
 import Gates from "./pages/gates/Gates";
 import GateV2 from "./pages/gate/GateV2";
+import Timer from "./pages/timer/Timer";
 import { GateProvider } from "./contexts/GateContext"; // Don't import useGate in App.js
+import Status from "./pages/status/Status";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
             <Route path="gates" element={<Gates />} />
             <Route path="announcement" element={<Announcement />} />
             <Route path="gate" element={<GateV2 />} />
+            <Route path="timer" element={<Timer />} />
+            <Route path="status" element={<Status />} />
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Route>
