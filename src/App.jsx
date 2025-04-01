@@ -22,6 +22,8 @@ import { GateProvider } from "./contexts/GateContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Unauthorized from "./components/Unauthorized";
 import RequireAuth from "./components/RequireAuth";
+import Status from "./pages/status/Status";
+import Timer from "./pages/timer/Timer";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +44,8 @@ function App() {
               <Route path="gates" element={<Gates />} />
               <Route path="announcement" element={<Announcement />} />
               <Route path="gate" element={<GateV2 />} />
+              <Route path="status" element={<Status />} />
+              <Route path="timer" element={<Timer />} />
             </Route>
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />

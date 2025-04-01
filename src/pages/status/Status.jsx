@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import StatusPanel from "./component/StatusPanel";
+import useAuth from "../../hooks/useAuth";
 
 export default function Status() {
+  const { auth } = useAuth();
   const [showFrame, setShowFrame] = useState(false);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export default function Status() {
               extraEdit={`flex flex-col duration-2000 ease-out transition-all py-[60px] gap-[50px] px-[15px] items-center justify-center`}
             >
               <WarningTitle icon={false} title={"Status"} />
-              <StatusPanel />
+              <StatusPanel staticData={auth} />
             </Frame>
           </motion.div>
         )}

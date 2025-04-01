@@ -1,10 +1,11 @@
 import { ChevronLeft, Code, Cpu, Feather, Box, CircleUser } from "lucide-react";
 
-export default function StatusPanel() {
+export default function StatusPanel({ staticData }) {
   // Sample user data
+
   const userData = {
-    name: "khalil",
-    team: "DCROWLERS",
+    name: staticData.user.userName,
+    team: staticData.team.teamName,
     ranking: 12,
     skills: {
       cs: 50, // Computer Science
