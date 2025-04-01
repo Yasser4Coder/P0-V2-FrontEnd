@@ -6,12 +6,10 @@ import { useNavigate } from "react-router-dom";
 const GateCard = ({ title, desc, open }) => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-[320px] w-full relative">
-      <img
-        src={RedKnight}
-        alt=""
-        className="w-full h-full rounded-3xl absolute bg-cover"
-      />
+    <div className="min-h-[320px] w-full relative overflow-hidden">
+      <div className=" absolute rounded-3xl overflow-hidden w-full h-full">
+        <img src={RedKnight} alt="" className="rounded-3xl object-cente" />
+      </div>
       {open === true ? (
         <div className="blur-backgroundGateCard mb-[30px] border-white border-2 rounded-[20px] p-[25px] flex flex-col items-center h-full">
           <div className="flex items-center gap-[10px] sm:gap-[20px] w-full">

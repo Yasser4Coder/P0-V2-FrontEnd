@@ -8,8 +8,10 @@ import WorningTitle from "../../components/WorningTitle";
 import Button from "../../components/Button";
 import Peragraph from "../../components/Peragraph";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Welcome = () => {
+  const { auth } = useAuth();
   const [fixBg, setFixBg] = useState(bgimg);
   const [disapair, setDisapair] = useState(false);
   const navigate = useNavigate();
@@ -46,8 +48,9 @@ const Welcome = () => {
         >
           <WorningTitle icon={true} title={"WELCOME TO PROJECT 0"} />
           <Peragraph>
-            the system is activated discover the <br /> challenges waiting for
-            you in the gates <br /> you will play agaisnt time and hard <br />
+            Hello {auth.user.userName} the system is activated discover the{" "}
+            <br /> challenges waiting for you in the gates <br /> you will play
+            agaisnt time and hard <br />
             challenges but before that you have to <br /> choose your character
             in the team
           </Peragraph>

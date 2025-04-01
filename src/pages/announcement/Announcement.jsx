@@ -2,7 +2,7 @@ import AnnouncementComp from "./component/AnnouncementComp";
 import bg from "../../assets/gif/scoreboard.webp";
 import { useEffect, useState } from "react";
 // eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 function Announcement() {
   const [showFrame, setShowFrame] = useState(false);

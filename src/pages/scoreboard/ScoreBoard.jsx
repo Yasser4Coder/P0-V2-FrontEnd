@@ -8,8 +8,10 @@ import third from "../../assets/icons/third.png";
 import { motion, AnimatePresence } from "framer-motion";
 import WorningTitle from "../../components/WorningTitle";
 import Peragraph from "../../components/Peragraph";
+import useAuth from "../../hooks/useAuth";
 const Home = () => {
   const [showFrame, setShowFrame] = useState(false);
+  const { auth } = useAuth();
 
   const teams = [
     { teamName: "D.CRAWLERS", points: 180.25 },
@@ -54,7 +56,8 @@ const Home = () => {
           >
             <WorningTitle title={"Scoreboard"} />
             <Peragraph>
-              Your Team D.CRAWLERS is in The 06th Place with 166.98 Points
+              Your Team {auth.team.teamName} is in The 06th Place with 166.98
+              Points
             </Peragraph>
             <div className="flex flex-col gap-[10px] w-[80%]">
               <AnimatePresence>
