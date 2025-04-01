@@ -21,6 +21,8 @@ const Header = () => {
             <Link to={"/scoreboard"}>Scoreboard</Link>
             <Link to={"/gates"}>Gates</Link>
             <Link to={"/announcement"}>announcements</Link>
+            <Link to={"/status"}>status</Link>
+            <Link to={"/timer"}>timer</Link>
           </div>
           <div onClick={handleClick} className="block sm:hidden">
             <AiOutlineBars className="text-white text-4xl cursor-pointer" />
@@ -38,6 +40,8 @@ const Header = () => {
           <Link to={"/scoreboard"}>Scoreboard</Link>
           <Link to={"/gates"}>Gates</Link>
           <Link to={"/announcement"}>announcements</Link>
+          <Link to={"/status"}>status</Link>
+          <Link to={"/timer"}>timer</Link>
         </div>
       )}
     </div>
