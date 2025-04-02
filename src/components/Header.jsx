@@ -8,7 +8,6 @@ import useAuth from "../hooks/useAuth";
 const Header = () => {
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
-  console.log(auth);
   const [toggle, setToggle] = useState(false);
   const handleClick = () => {
     setToggle(!toggle);
