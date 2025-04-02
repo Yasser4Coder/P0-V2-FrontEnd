@@ -39,7 +39,7 @@ const Home = () => {
           >
             <WorningTitle title={"Scoreboard"} />
             <Peragraph>
-              Your Team {auth.team.teamName} is in The 06th Place with 166.98
+              Your Team {auth?.team?.teamName} is in The 06th Place with 166.98
               Points
             </Peragraph>
             <SbTeams />
