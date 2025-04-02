@@ -1,6 +1,6 @@
 import { Send } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
+import API from "../../apis/axiosInstance";
 
 const NotificationsTab = () => {
   const [massege, setMassege] = useState("");
@@ -9,7 +9,7 @@ const NotificationsTab = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:6010/api/notifications/send", {
+      await API.post("/notifications/send", {
         message: massege,
       });
       seterrColor("text-green-500");
