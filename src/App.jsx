@@ -25,6 +25,7 @@ import RequireAuth from "./components/RequireAuth";
 import Status from "./pages/status/Status";
 import Timer from "./pages/timer/Timer";
 import HomeAL from "./pages/homeAL/HomeAL";
+import SubmisionPage from "./pages/challenge/SubmissionPage";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ function App() {
               <Route path="status" element={<Status />} />
               <Route path="timer" element={<Timer />} />
               <Route path="home" element={<HomeAL />} />
+              <Route path="submition" element={<SubmisionPage />} />
             </Route>
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
