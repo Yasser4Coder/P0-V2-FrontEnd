@@ -36,7 +36,7 @@ export default function Status() {
             transition={{ duration: 0.8, ease: "easeOut" }} // Smooth animation
           >
             <Frame
-              extraEdit={`flex flex-col duration-2000 ease-out transition-all py-[60px] gap-[50px] px-[15px] items-center justify-center`}
+              extraEdit={`flex flex-col duration-2000 ease-out transition-all py-[60px] gap-[10px] px-[15px] items-center justify-center`}
             >
               <WarningTitle icon={false} title={"Status"} />
               <StatusPanel staticData={auth} />

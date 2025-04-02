@@ -1,6 +1,14 @@
 import React from "react";
 
-const Peragraph = ({ children, error, correct }) => {
+const Peragraph = ({
+  children,
+  error,
+  correct,
+  text = "text-md sm:text-2xl",
+  extraStyle,
+  tracking = "leading-[2.5rem]",
+  leading = "tracking-[0.4rem]",
+}) => {
   return (
     <p
       className={`${
@@ -9,7 +17,7 @@ const Peragraph = ({ children, error, correct }) => {
           : correct === true
           ? "text-green-500"
           : "text-white"
-      } font-sulphur leading-[2.5rem] text-center text-md sm:text-2xl tracking-[0.4rem]`}
+      } font-sulphur ${tracking} ${leading}  ${extraStyle} text-center ${text}`}
     >
       {children}
     </p>

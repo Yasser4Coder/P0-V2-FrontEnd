@@ -24,6 +24,7 @@ import Unauthorized from "./components/Unauthorized";
 import RequireAuth from "./components/RequireAuth";
 import Status from "./pages/status/Status";
 import Timer from "./pages/timer/Timer";
+import HomeAL from "./pages/homeAL/HomeAL";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ function App() {
               <Route path="gate" element={<GateV2 />} />
               <Route path="status" element={<Status />} />
               <Route path="timer" element={<Timer />} />
+              <Route path="home" element={<HomeAL />} />
             </Route>
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />

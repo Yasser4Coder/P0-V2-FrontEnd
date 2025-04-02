@@ -1,7 +1,7 @@
-const Frame = ({ children, extraEdit }) => {
+const Frame = ({ children, extraEdit, width = "w-full" }) => {
   return (
     <div
-      className={`blur-background ${extraEdit} mb-[30px] border-white border-2 rounded-[20px]`}
+      className={`blur-background ${width} ${extraEdit} mb-[30px] border-white border-2 rounded-[20px]`}
     >
       {children}
     </div>

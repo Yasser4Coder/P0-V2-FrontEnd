@@ -37,7 +37,7 @@ export default function Timer() {
             <Frame
               extraEdit={`flex flex-col duration-2000 ease-out transition-all py-[100px] gap-[50px] px-[15px] items-center justify-center`}
             >
-              <WarningTitle icon={false} title={"Timer"} className="" />
+              <WarningTitle icon={false} title={"Timer"} />
               <TimerPanel />
             </Frame>
           </motion.div>

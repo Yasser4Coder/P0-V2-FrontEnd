@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import API from "../apis/axiosInstance";
 import useAuth from "../hooks/useAuth";
@@ -6,19 +6,15 @@ import useAuth from "../hooks/useAuth";
 const RequireAuth = ({ allowedRoles }) => {
   const { auth, setAuth } = useAuth();
   const location = useLocation();
-  const [loading, setLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
     API.get("/auth/auth-check")
-      .then((response) => {
-        setIsAuthenticated(true);
-      })
-      .catch(() => setIsAuthenticated(false))
-      .finally(() => setLoading(false)); // ✅ Ensures state updates
+      .then(() => setIsAuthenticated(true))
+      .catch(() => setIsAuthenticated(false));
   }, [setAuth]);
 
-  if (loading) return <p>Loading...</p>; // ✅ Prevents premature redirect
+  if (isAuthenticated === null) return null; // ✅ Prevents rendering anything until auth check completes
 
   return isAuthenticated && allowedRoles.includes(auth?.role?.role) ? (
     <Outlet />
