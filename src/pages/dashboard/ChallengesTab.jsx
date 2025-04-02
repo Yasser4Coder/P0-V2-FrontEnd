@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";     
+import toast from "react-hot-toast";
 
 const AddChallengeForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [file, setFile] = useState(null);
 
   const onSubmit = async (data) => {
@@ -14,16 +18,16 @@ const AddChallengeForm = () => {
     formData.append("category", data.category);
     formData.append("hints", data.hints);
     formData.append("attechmentFile", file);
-  
+
     try {
       const response = await fetch("http://localhost:5000/api/challenges", {
         method: "POST",
         body: formData,
       });
-  
+
       const textResponse = await response.text(); // استلام الاستجابة على شكل نص
       console.log("Response Text:", textResponse);
-  
+
       // الآن إذا كانت الاستجابة بنجاح، نحاول تحويلها إلى JSON
       if (response.ok) {
         const result = JSON.parse(textResponse); // تحويل النص إلى JSON
@@ -36,7 +40,7 @@ const AddChallengeForm = () => {
       toast.error("حدث خطأ غير متوقع");
     }
   };
-  
+
   // التعامل مع تغيير الملف
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -45,7 +49,9 @@ const AddChallengeForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Title
+        </label>
         <input
           type="text"
           className="w-full p-2 border border-gray-300 rounded-md"
@@ -53,9 +59,10 @@ const AddChallengeForm = () => {
         />
         {errors.title && <span>Title is required</span>}
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Description
+        </label>
         <textarea
           rows="3"
           className="w-full p-2 border border-gray-300 rounded-md"
@@ -63,9 +70,10 @@ const AddChallengeForm = () => {
         />
         {errors.description && <span>Description is required</span>}
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Points</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Points
+        </label>
         <input
           type="number"
           className="w-full p-2 border border-gray-300 rounded-md"
@@ -73,9 +81,10 @@ const AddChallengeForm = () => {
         />
         {errors.points && <span>Points are required</span>}
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Category
+        </label>
         <input
           type="text"
           className="w-full p-2 border border-gray-300 rounded-md"
@@ -83,18 +92,20 @@ const AddChallengeForm = () => {
         />
         {errors.category && <span>Category is required</span>}
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Hints</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Hints
+        </label>
         <textarea
           rows="2"
           className="w-full p-2 border border-gray-300 rounded-md"
           {...register("hints")}
         />
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Attachment</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Attachment
+        </label>
         <input
           type="file"
           accept=".jpg,.png,.pdf,.docx"
@@ -102,7 +113,18 @@ const AddChallengeForm = () => {
           onChange={handleFileChange}
         />
       </div>
-
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          {" "}
+          Wave
+        </label>
+        <input
+          type="number"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          {...register("wave")}
+        />
+      </div>
+      .
       <button
         type="submit"
         className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
