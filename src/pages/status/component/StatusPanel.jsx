@@ -5,7 +5,7 @@ export default function StatusPanel({ staticData }) {
 
   const userData = {
     name: staticData.user.userName,
-    team: staticData.team.teamName,
+    team: staticData?.team?.teamName,
     ranking: 12,
     skills: {
       cs: 50, // Computer Science
