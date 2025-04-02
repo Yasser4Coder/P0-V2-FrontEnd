@@ -9,7 +9,7 @@ const NotificationsTab = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/notifications/send", {
+      await axios.post("http://localhost:6010/api/notifications/send", {
         message: massege,
       });
       seterrColor("text-green-500");
