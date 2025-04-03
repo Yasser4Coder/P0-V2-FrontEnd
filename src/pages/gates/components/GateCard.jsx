@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import exclamation from "../../../assets/icons/exclamation.svg";
 import RedKnight from "../../../assets/images/boss.webp";
 import { useNavigate } from "react-router-dom";
 
-const GateCard = ({ title, desc, open }) => {
+const GateCard = ({ title, desc, open, gateNumber }) => {
   const navigate = useNavigate();
+  
+  // متغير لحفظ المؤقت
+  const [timer, setTimer] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(prevTimer => prevTimer + 1); // كل ثانية
+    }, 1000);
+
+    return () => clearInterval(interval); // تنظيف المؤقت عند التفكيك
+  }, []);
+
+  useEffect(() => {
+    if (timer >= 60) { // بعد دقيقة واحدة
+      // قم بفتح الـ wave
+      // يمكنك هنا تنفيذ المنطق الذي تريده
+      console.log(`Wave opened for gate ${gateNumber}`);
+    }
+  }, [timer]);
+
   return (
     <div className="min-h-[320px] w-full relative overflow-hidden">
       <div className=" absolute rounded-3xl overflow-hidden w-full h-full">
-        <img src={RedKnight} alt="" className="rounded-3xl object-cente" />
+        <img src={RedKnight} alt="" className="rounded-3xl object-center" />
       </div>
       {open === true ? (
         <div className="blur-backgroundGateCard mb-[30px] border-white border-2 rounded-[20px] p-[25px] flex flex-col items-center h-full">
@@ -30,14 +50,14 @@ const GateCard = ({ title, desc, open }) => {
               />
             </div>
             <div
-              className={`
+              className="
               border border-white 
               flex-grow 
               flex items-center justify-center 
               h-[40.85px]
               px-[15px]
               w-full
-            `}
+            "
             >
               <h1
                 className="
@@ -59,7 +79,7 @@ const GateCard = ({ title, desc, open }) => {
           </div>
           <p className="text-white text-center mt-[25px] text-lg">{desc}</p>
           <button
-            onClick={() => navigate("/gate")}
+            onClick={() => navigate(`/gate/${gateNumber}`)} // التنقل حسب رقم البوابة
             className={`border-[1px] mt-[25px] text-white border-white font-sulphur text-center p-[15px] flex items-center justify-center cursor-pointer lg:text-xl
               md:text-lg
               sm:text-md
@@ -88,14 +108,14 @@ const GateCard = ({ title, desc, open }) => {
               />
             </div>
             <div
-              className={`
+              className="
               border border-white 
               flex-grow 
               flex items-center justify-center 
               h-[40.85px]
               px-[15px]
               w-full
-            `}
+            "
             >
               <h1
                 className="

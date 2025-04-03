@@ -16,6 +16,7 @@ const Gates = () => {
 
     return () => clearTimeout(timer);
   }, []);
+  
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[60px]">
       <img
@@ -38,17 +39,27 @@ const Gates = () => {
               <GateCard
                 open={true}
                 title={"igris: the red knight"}
-                desc="the system is activated discover the challenges waiting for you in the gates you will play agaisnt time and hard challenges but before that you have to choose your character in the team"
+                desc="The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges. But before that, you have to choose your character in the team."
+                gateNumber={1}
               />
               <GateCard
                 open={true}
                 title={"igris: the red knight"}
-                desc="the system is activated discover the challenges waiting for you in the gates you will play agaisnt time and hard challenges but before that you have to choose your character in the team"
+                desc="The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges. But before that, you have to choose your character in the team."
+                gateNumber={2}
               />
             </div>
             <div className="flex w-[80%] gap-[30px]">
-              <GateCard title={"igris: the red knight"} />
-              <GateCard title={"igris: the red knight"} />
+              <GateCard
+                open={false}
+                title={"igris: the red knight"}
+                gateNumber={3}
+              />
+              <GateCard
+                open={false}
+                title={"igris: the red knight"}
+                gateNumber={4}
+              />
             </div>
           </Frame>
         </motion.div>

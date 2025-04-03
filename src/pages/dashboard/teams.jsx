@@ -10,7 +10,7 @@ const Teams = () => {
   const { mutate: addTeamMutate } = useAddTeam();
   const { mutate: updateTeamMutate } = useEditeTeam(); 
   const deleteMutation = useDeleteTeam();
-
+ console.log("teamssss",teams)
   const onSubmit = (data) => {
     console.log("Form data:", data);
     if (data._id) {

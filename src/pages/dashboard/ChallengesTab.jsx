@@ -11,18 +11,22 @@ const AddChallengeForm = () => {
   const [file, setFile] = useState(null);
 
   const onSubmit = async (data) => {
+    console.log("data ch",data)
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("description", data.description);
     formData.append("points", data.points);
     formData.append("category", data.category);
     formData.append("hints", data.hints);
-    formData.append("attechmentFile", file);
+    formData.append("attachmentFile", file);
+    formData.append("wave", data.wave);
+
 
     try {
-      const response = await fetch("http://localhost:5000/api/challenges", {
+      const response = await fetch("http://localhost:6010/api/challenges", {
         method: "POST",
         body: formData,
+        credentials: "include", // 🔥 مهم جدًا للسماح بإرسال ملفات تعريف الارتباط
       });
 
       const textResponse = await response.text(); // استلام الاستجابة على شكل نص
