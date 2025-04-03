@@ -109,6 +109,7 @@ const SubmissionCard = ({
 SubmissionCard.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
+  requireFile: PropTypes.string,
 };
 
 export default SubmissionCard;
