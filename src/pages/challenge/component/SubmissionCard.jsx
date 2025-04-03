@@ -1,11 +1,14 @@
-"use client";
-
 import { useForm } from "react-hook-form";
 import Frame from "../../../components/Frame";
 import Peragraph from "../../../components/Peragraph";
 import WarningTitle from "../../../components/WorningTitle";
+import PropTypes from "prop-types";
 
-const SubmissionCard = () => {
+const SubmissionCard = ({
+  name = "test name",
+  description = "testestestetsttetetettetetetet",
+  requireFile,
+}) => {
   const { register, handleSubmit, watch } = useForm();
   const submissionFile = watch("file");
   const fileName =
@@ -26,7 +29,7 @@ const SubmissionCard = () => {
         hieght="h-[50.85px]"
         iconWidth="w-[50.85px]"
         icon={false}
-        title={"CHALLENGE NAME LIKE A PROPS"}
+        title={name}
       />
 
       <div className="w-full">
@@ -39,16 +42,25 @@ const SubmissionCard = () => {
             leading="leading-[2.2rem]"
             text="text-md sm:text-xl"
           >
-            Jin-Woo stood outside the hospital, his heart pounding. His mother
-            lay inside, trapped in a coma, and the doctors refused to help
-            without an outrageous payment. He clenched his fists—he wouldn't let
-            the system decide her fate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ad voluptatum ipsa eos placeat officia! Ex quo,
-            reiciendis ut id nostrum atque voluptatibus animi consequuntur
-            officiis quod architecto minima dolorum aut?
+            {description}
           </Peragraph>
         </div>
       </div>
+
+      <div className="w-full flex flex-col items-start">
+        <Peragraph className="text-xl font-medium text-white">
+          Requirement File:
+        </Peragraph>
+        <a
+          href={requireFile}
+          download="your-file-name.ext"
+          className="border border-[#03BFD9] text-white px-4 py-2 mt-2 text-xl cursor-pointer"
+        >
+          {fileName || "Download File"}
+        </a>
+      </div>
+
+      <div className="w-full p-[1px] bg-white"></div>
 
       <div className="w-full flex flex-col items-start">
         <Peragraph className="text-xl font-medium text-white">
@@ -58,7 +70,7 @@ const SubmissionCard = () => {
           htmlFor="fileInput"
           className="border border-[#03BFD9] text-white px-4 py-2 mt-2 text-xl cursor-pointer"
         >
-          {fileName || "File"}
+          {fileName || "Upload File"}
         </label>
         <input
           id="fileInput"
@@ -92,6 +104,11 @@ const SubmissionCard = () => {
       </div>
     </Frame>
   );
+};
+
+SubmissionCard.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default SubmissionCard;
