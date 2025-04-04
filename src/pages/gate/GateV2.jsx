@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+
 import img from "../../assets/images/boss.webp";
 import ChallengeCard from "./component/ChallengeCard";
 import bg from "../../assets/gif/scoreboard.webp";
@@ -13,12 +13,12 @@ const fetchChallenges = async (wave) => {
 };
 
 const GateV2 = () => {
-  const { wave } = useParams(); // استخراج رقم الـ wave من الـ URL
+  const { wave } = useParams(); 
 
   const { data: gateChallenges = [], isLoading, error } = useQuery({
     queryKey: ["challenges", wave],
     queryFn: () => fetchChallenges(wave),
-    enabled: !!wave, // التأكد من وجود `wave` قبل تنفيذ الطلب
+    enabled: !!wave,
   });
 
   if (isLoading) return <div className="text-white">Loading...</div>;
@@ -42,7 +42,7 @@ const GateV2 = () => {
               // difficulty={challenge.difficulty}
               solved={challenge.solved}
               index={index + 1}
-              to={`/challenge/${challenge._id}`}
+              to={`/submition/${challenge._id}`}
             />
           ))}
           <div className="div6 relative rounded-2xl border-2 border-white overflow-hidden">

@@ -18,6 +18,13 @@ const Dlayout = () => {
               <Award className="w-5 h-5" />
               <span>Dashboard</span>
             </Link>
+            <Link
+              to="/dashboard/teams"
+              className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
+            >
+              <Award className="w-5 h-5" />
+              <span>Teams</span>
+            </Link>
 
             <Link
               to="/dashboard/users"
@@ -32,7 +39,14 @@ const Dlayout = () => {
               className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
             >
               <Award className="w-5 h-5" />
-              <span>Challenges</span>
+              <span>Add Challenges</span>
+            </Link>
+            <Link
+              to="/dashboard/getAllChallenges"
+              className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
+            >
+              <Award className="w-5 h-5" />
+              <span>All Challenges</span>
             </Link>
 
             <Link

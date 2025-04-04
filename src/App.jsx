@@ -49,7 +49,7 @@ function App() {
               <Route path="status" element={<Status />} />
               <Route path="timer" element={<Timer />} />
               <Route path="home" element={<HomeAL />} />
-              <Route path="submition" element={<SubmisionPage />} />
+              <Route path="submition/:id" element={<SubmisionPage />} />
             </Route>
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
