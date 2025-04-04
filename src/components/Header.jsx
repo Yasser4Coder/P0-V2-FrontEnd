@@ -29,9 +29,9 @@ const Header = () => {
             <Link to={auth?.user?.userName ? "/home" : "/"}>Home</Link>
             <Link to={"/scoreboard"}>Scoreboard</Link>
             <Link to={"/gates"}>Gates</Link>
-            <Link to={"/announcement"}>announcements</Link>
-            <Link to={"/status"}>status</Link>
-            <Link to={"/timer"}>timer</Link>
+            <Link to={"/announcement"}>Announcements</Link>
+            <Link to={"/status"}>Status</Link>
+            <Link to={"/timer"}>Timer</Link>
           </div>
           <div onClick={handleClick} className="block sm:hidden">
             <AiOutlineBars className="text-white text-4xl cursor-pointer" />

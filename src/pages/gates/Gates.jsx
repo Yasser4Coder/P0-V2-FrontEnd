@@ -16,7 +16,7 @@ const Gates = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  
+
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[60px]">
       <img
@@ -43,10 +43,10 @@ const Gates = () => {
                 gateNumber={1}
               />
               <GateCard
-                open={true}
+                open={false}
                 title={"igris: the red knight"}
-                desc="The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges. But before that, you have to choose your character in the team."
                 gateNumber={2}
+                date="2025-04-15T14:00:00.000Z"
               />
             </div>
             <div className="flex w-[80%] gap-[30px]">
@@ -54,11 +54,13 @@ const Gates = () => {
                 open={false}
                 title={"igris: the red knight"}
                 gateNumber={3}
+                date="2025-04-15T16:00:00.000Z"
               />
               <GateCard
                 open={false}
                 title={"igris: the red knight"}
                 gateNumber={4}
+                date="2025-04-15T18:00:00.000Z"
               />
             </div>
           </Frame>

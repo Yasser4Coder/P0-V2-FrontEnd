@@ -30,7 +30,6 @@ function Announcement() {
         >
           {/* we will use the map function here after fetcing the data */}
           <AnnouncementComp />
-          <AnnouncementComp />
         </motion.div>
       )}
     </div>
