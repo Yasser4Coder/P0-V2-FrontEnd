@@ -51,6 +51,7 @@ const Login = () => {
         { name: username, password: password },
         { withCredentials: true }
       );
+      console.log(response);
 
       const userData = response.data;
       localStorage.setItem("auth", JSON.stringify(userData));
