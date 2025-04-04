@@ -3,27 +3,34 @@ import exclamation from "../../../assets/icons/exclamation.svg";
 import RedKnight from "../../../assets/images/boss.webp";
 import { useNavigate } from "react-router-dom";
 
-const GateCard = ({ title, desc, open, gateNumber }) => {
+const GateCard = ({ title, desc, open, gateNumber, date }) => {
   const navigate = useNavigate();
-  
-  // متغير لحفظ المؤقت
-  const [timer, setTimer] = useState(0);
+
+  const targetDate = new Date(date).getTime();
+  const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(prevTimer => prevTimer + 1); // كل ثانية
-    }, 1000);
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
 
-    return () => clearInterval(interval); // تنظيف المؤقت عند التفكيك
-  }, []);
+      if (difference <= 0) {
+        setTime({ hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
 
-  useEffect(() => {
-    if (timer >= 60) { // بعد دقيقة واحدة
-      // قم بفتح الـ wave
-      // يمكنك هنا تنفيذ المنطق الذي تريده
-      console.log(`Wave opened for gate ${gateNumber}`);
-    }
-  }, [timer]);
+      const hours = Math.floor(difference / (1000 * 60 * 60));
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      setTime({ hours, minutes, seconds });
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
 
   return (
     <div className="min-h-[320px] w-full relative overflow-hidden">
@@ -150,7 +157,7 @@ const GateCard = ({ title, desc, open, gateNumber }) => {
               mt-[60px]
             "
           >
-            36:00:00
+            {time.hours}:{time.minutes}:{time.seconds}
           </div>
         </div>
       )}
