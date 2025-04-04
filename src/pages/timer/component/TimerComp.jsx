@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 // Timer Display Component
 function TimerDisplay({ time }) {
   const formatTime = (value) => value.toString().padStart(2, "0");
@@ -30,7 +29,7 @@ export default function TimerPanel() {
         return;
       }
 
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const hours = Math.floor(difference / (1000 * 60 * 60));
       const minutes = Math.floor((difference / (1000 * 60)) % 60);
       const seconds = Math.floor((difference / 1000) % 60);
 
