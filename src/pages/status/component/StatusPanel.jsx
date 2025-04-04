@@ -1,4 +1,4 @@
-import { ChevronLeft, Code, Cpu, Feather, Box, CircleUser } from "lucide-react";
+import { Code, Cpu, Feather, Box, CircleUser } from "lucide-react";
 
 export default function StatusPanel({ staticData }) {
   // Sample user data

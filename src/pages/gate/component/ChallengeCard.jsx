@@ -50,7 +50,7 @@ const ChallengeCard = ({
             show2 === true
           ? "blur-backgroundGateCard-green border-[#26CD87] drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
           : "blur-backgroundGateCard border-white"
-      } font-sulphur relative rounded-2xl flex flex-col items-center justify-between py-[13px] px-[15px] border-3`}
+      } font-sulphur min-h-[200px] relative rounded-2xl flex flex-col items-center justify-between py-[13px] px-[15px] border-3`}
     >
       {index === 1 && (
         <div className="absolute w-[5px] h-[124%] bg-white z-20 bottom-[-125%] overflow-hidden">
