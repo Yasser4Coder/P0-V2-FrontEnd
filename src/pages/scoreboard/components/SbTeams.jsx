@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { socket } from "../../../../socket";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import first from "../../../assets/icons/first.png";
 import second from "../../../assets/icons/secand.png";
