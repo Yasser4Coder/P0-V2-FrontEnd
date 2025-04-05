@@ -29,7 +29,7 @@ const GateV2 = () => {
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   const solvedCount = gateChallenges.filter(
-    (challenge) => challenge.solved
+    (challenge) => challenge.isSolved
   ).length;
   const revealPercentage = (solvedCount / gateChallenges.length) * 100;
 
