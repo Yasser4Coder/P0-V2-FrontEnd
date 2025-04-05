@@ -13,9 +13,13 @@ const fetchChallenges = async (wave) => {
 };
 
 const GateV2 = () => {
-  const { wave } = useParams(); 
+  const { wave } = useParams();
 
-  const { data: gateChallenges = [], isLoading, error } = useQuery({
+  const {
+    data: gateChallenges = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["challenges", wave],
     queryFn: () => fetchChallenges(wave),
     enabled: !!wave,
@@ -24,12 +28,18 @@ const GateV2 = () => {
   if (isLoading) return <div className="text-white">Loading...</div>;
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
-  const solvedCount = gateChallenges.filter((challenge) => challenge.solved).length;
+  const solvedCount = gateChallenges.filter(
+    (challenge) => challenge.solved
+  ).length;
   const revealPercentage = (solvedCount / gateChallenges.length) * 100;
 
   return (
     <div>
-      <img src={bg} alt="" className="z-0 fixed w-full h-full bg-center top-0 left-0 bg-contain" />
+      <img
+        src={bg}
+        alt=""
+        className="z-0 fixed w-full h-full bg-center top-0 left-0 bg-contain"
+      />
       <Frame extraEdit={"py-[20px] px-[40px] mt-[40px]"}>
         <div className="relative z-10 mt-[20px] max-h-[900px] h-[88vh] parent">
           {gateChallenges.map((challenge, index) => (
@@ -61,6 +71,5 @@ const GateV2 = () => {
     </div>
   );
 };
-
 
 export default GateV2;
