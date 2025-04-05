@@ -1,12 +1,18 @@
+import { useState } from "react";
+
 import { Code, Cpu, Feather, Box, CircleUser } from "lucide-react";
 
 export default function StatusPanel({ staticData }) {
+  const [rank] = useState(() => {
+    const savedRank = localStorage.getItem("teamRank");
+    return savedRank ? parseInt(savedRank) : null;
+  });
   // Sample user data
 
   const userData = {
     name: staticData.user.userName,
     team: staticData?.team?.teamName,
-    ranking: 12,
+    ranking: rank,
     skills: {
       cs: 50, // Computer Science
       ai: 50, // Artificial Intelligence

@@ -9,6 +9,14 @@ import Peragraph from "../../components/Peragraph";
 import useAuth from "../../hooks/useAuth";
 import SbTeams from "./components/SbTeams";
 const Home = () => {
+  const [rank] = useState(() => {
+    const savedRank = localStorage.getItem("teamRank");
+    return savedRank ? parseInt(savedRank) : null;
+  });
+  const [points] = useState(() => {
+    const savedPoints = localStorage.getItem("teamPoints");
+    return savedPoints ? parseFloat(savedPoints) : null;
+  });
   const [showFrame, setShowFrame] = useState(false);
   const { auth } = useAuth();
 
@@ -39,8 +47,9 @@ const Home = () => {
           >
             <WorningTitle title={"Scoreboard"} />
             <Peragraph>
-              Your Team {auth?.team?.teamName} is in The 06th Place with 166.98
-              Points
+              Your Team {auth?.team?.teamName} is in The {rank}th Place with{" "}
+              {""}
+              {points} Points
             </Peragraph>
             <SbTeams />
           </Frame>
