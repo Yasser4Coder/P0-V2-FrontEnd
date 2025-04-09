@@ -50,7 +50,7 @@ const GateV2 = () => {
               categorie={challenge.category}
               points={challenge.points}
               // difficulty={challenge.difficulty}
-              solved={challenge.isSolved}
+              solved={true}
               index={index + 1}
               to={`/submition/${challenge._id}`}
             />

@@ -86,7 +86,7 @@ const SbTeams = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, type: "spring" }}
+            transition={{ duration: 3, type: "spring" }}
             className={`flex border-[1px] py-[8px] gap-[10%] border-white font-bold justify-between px-[30px] items-center 
               ${
                 index === 0
