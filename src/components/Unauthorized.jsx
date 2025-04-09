@@ -50,7 +50,15 @@ const Unauthorized = () => {
     e.preventDefault();
 
     // Basic validation
-    if (!formData.name || !formData.lastName || !formData.email) {
+    if (
+      !formData.name ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.hasTeam ||
+      !formData.nationalId ||
+      !formData.skill ||
+      !formData.tshirtSize
+    ) {
       setError(true);
       setErrorMassage("Please fill in all required fields.");
       return;
@@ -147,21 +155,21 @@ const Unauthorized = () => {
               </Peragraph>
 
               <FormInput
-                label="Name"
+                label="Name *"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 error={error && !formData.name}
               />
               <FormInput
-                label="Last Name"
+                label="Last Name *"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
                 error={error && !formData.lastName}
               />
               <FormInput
-                label="Email"
+                label="Email *"
                 name="email"
                 type="email"
                 value={formData.email}
@@ -171,7 +179,7 @@ const Unauthorized = () => {
 
               {/* Team Section */}
               <div className="w-full flex flex-col gap-[15px] items-start">
-                <Peragraph>Do you have a team?</Peragraph>
+                <Peragraph>Do you have a team? *</Peragraph>
                 <div className="flex items-center gap-6">
                   {["yes", "no"].map((value) => (
                     <label
@@ -199,13 +207,13 @@ const Unauthorized = () => {
                 onChange={handleChange}
               />
               <FormInput
-                label="National Identification Number"
+                label="National Identification Number *"
                 name="nationalId"
                 value={formData.nationalId}
                 onChange={handleChange}
               />
               <FormInput
-                label="Your Skill"
+                label="Your Skill *"
                 name="skill"
                 value={formData.skill}
                 onChange={handleChange}
@@ -237,7 +245,7 @@ const Unauthorized = () => {
 
               {/* T-shirt size */}
               <div className="w-full flex flex-col gap-[15px] items-start">
-                <Peragraph>T-Shirt Size</Peragraph>
+                <Peragraph>T-Shirt Size *</Peragraph>
                 <div className="flex items-center gap-6">
                   {["S", "M", "L", "XL"].map((size) => (
                     <label
