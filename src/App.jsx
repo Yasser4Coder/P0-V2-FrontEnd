@@ -37,9 +37,9 @@ function App() {
         <Routes>
           {/* Main Layout Routes */}
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
             <Route element={<RequireAuth allowedRoles={["1112", "1"]} />}>
+              <Route index element={<Home />} />
+              <Route path="login" element={<Login />} />
               <Route path="welcome" element={<Welcome />} />
               <Route path="scoreboard" element={<ScoreBoard />} />
               <Route path="notification" element={<NotificationPage />} />
@@ -53,7 +53,7 @@ function App() {
             </Route>
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
-            <Route path="unauthorized" element={<Unauthorized />} />
+            <Route path="register" element={<Unauthorized />} />
           </Route>
 
           {/* Dashboard Layout Routes */}

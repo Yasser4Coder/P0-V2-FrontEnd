@@ -14,6 +14,7 @@ const Unauthorized = () => {
   const [character, setCharacter] = useState("center");
   const [dark, setDark] = useState(false);
   const [start, setStart] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const [error, setError] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
 
@@ -66,7 +67,7 @@ const Unauthorized = () => {
       });
 
       setStart(false);
-      alert("Data saved successfully!");
+      setIsSaved(true);
 
       // Reset form
       setFormData({
@@ -90,6 +91,35 @@ const Unauthorized = () => {
       console.error(err);
     }
   };
+  if (isSaved) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full mt-[40px]">
+        <BackGround character={character} todark={dark} />
+        {start && (
+          <div className="text-green-500 fixed top-[50%] left-[50%] translate-x-[-50%] z-30 translate-y-[-50%] font-sulphur leading-[2.5rem] text-center text-2xl tracking-[0.4rem]">
+            saving...
+          </div>
+        )}
+        {showFrame && (
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Frame extraEdit="py-[40px] px-[15px] gap-[40px] relative items-center justify-center flex flex-col">
+              <WorningTitle title="Thank you" />
+              <Peragraph>
+                🎉 Registration completed successfully! <br /> Check your email
+                for any news or updates.
+              </Peragraph>
+            </Frame>
+          </motion.div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[40px]">
       <BackGround character={character} todark={dark} />
