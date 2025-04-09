@@ -132,8 +132,8 @@ const Unauthorized = () => {
     <div className="flex flex-col container min-h-[50vh] mx-auto items-center justify-center w-full mt-[40px]">
       <BackGround character={character} todark={dark} />
       {start && (
-        <div className="text-white fixed top-[50%] left-[50%] translate-x-[-50%] z-30 translate-y-[-50%] font-sulphur leading-[2.5rem] text-center text-2xl tracking-[0.4rem]">
-          Starting...
+        <div className="text-green-500 fixed top-[50%] left-[50%] translate-x-[-50%] z-30 translate-y-[-50%] font-sulphur leading-[2.5rem] text-center text-2xl tracking-[0.4rem]">
+          Saving...
         </div>
       )}
       {showFrame && (
