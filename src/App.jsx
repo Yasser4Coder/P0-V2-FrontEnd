@@ -36,6 +36,8 @@ function App() {
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
           {/* Main Layout Routes */}
+          <Route path="register" element={<Unauthorized />} />
+
           <Route path="/" element={<Layout />}>
             <Route element={<RequireAuth allowedRoles={["1112", "1"]} />}>
               <Route index element={<Home />} />
@@ -53,7 +55,6 @@ function App() {
             </Route>
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
-            <Route path="register" element={<Unauthorized />} />
           </Route>
 
           {/* Dashboard Layout Routes */}
