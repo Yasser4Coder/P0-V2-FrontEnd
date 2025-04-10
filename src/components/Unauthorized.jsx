@@ -211,7 +211,7 @@ const Unauthorized = () => {
               </div>
 
               <FormInput
-                label="Team Name (Maximum of 5 members per team)"
+                label="Team Name (Team must have a maximum of 5 members)"
                 name="teamName"
                 value={formData.teamName}
                 onChange={handleChange}
