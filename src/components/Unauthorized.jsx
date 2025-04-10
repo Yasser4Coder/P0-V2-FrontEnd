@@ -179,7 +179,7 @@ const Unauthorized = () => {
                 error={error && !formData.email}
               />
               <FormInput
-                label="Phone Number"
+                label="Phone Number *"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
