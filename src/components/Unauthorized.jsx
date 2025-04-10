@@ -221,12 +221,15 @@ const Unauthorized = () => {
                 name="nationalId"
                 value={formData.nationalId}
                 onChange={handleChange}
+                error={error && !formData.nationalId}
+                type="number"
               />
               <FormInput
                 label="Your Skill *"
                 name="skill"
                 value={formData.skill}
                 onChange={handleChange}
+                error={error && !formData.skill}
               />
               <FormInput
                 label="LinkedIn"
@@ -285,9 +288,7 @@ const Unauthorized = () => {
 
               {/* Submit Button */}
               <div className="mt-4">
-                <Button text="Register" text="" type="submit">
-                  Submit
-                </Button>
+                <Button type="submit">Submit</Button>
               </div>
             </form>
           </Frame>
