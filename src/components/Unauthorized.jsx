@@ -31,6 +31,7 @@ const Unauthorized = () => {
     major: "",
     university: "",
     tshirtSize: "",
+    phone: "",
   });
 
   useEffect(() => {
@@ -57,7 +58,8 @@ const Unauthorized = () => {
       !formData.hasTeam ||
       !formData.nationalId ||
       !formData.skill ||
-      !formData.tshirtSize
+      !formData.tshirtSize ||
+      !formData.phone
     ) {
       setError(true);
       setErrorMassage("Please fill in all required fields.");
@@ -175,6 +177,14 @@ const Unauthorized = () => {
                 value={formData.email}
                 onChange={handleChange}
                 error={error && !formData.email}
+              />
+              <FormInput
+                label="Phone Number"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                type="number"
+                error={error && !formData.phone}
               />
 
               {/* Team Section */}
