@@ -211,7 +211,7 @@ const Unauthorized = () => {
               </div>
 
               <FormInput
-                label="Team Name"
+                label="Team Name (Maximum of 5 members per team)"
                 name="teamName"
                 value={formData.teamName}
                 onChange={handleChange}
@@ -302,7 +302,7 @@ export default Unauthorized;
 
 const FormInput = ({ label, name, value, onChange, error, type = "text" }) => (
   <div className="w-full flex flex-col gap-[15px] items-start">
-    <Peragraph>{label}</Peragraph>
+    <p className="text-white text-lg sm:text-2xl">{label}</p>
     <input
       type={type}
       name={name}
