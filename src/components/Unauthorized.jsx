@@ -260,7 +260,7 @@ const Unauthorized = () => {
               <div className="w-full flex flex-col gap-[15px] items-start">
                 <Peragraph>T-Shirt Size *</Peragraph>
                 <div className="flex items-center gap-6">
-                  {["S", "M", "L", "XL"].map((size) => (
+                  {["S", "M", "L", "XL", "XXL"].map((size) => (
                     <label
                       key={size}
                       className="flex items-center gap-2 text-white"
