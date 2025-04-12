@@ -288,7 +288,7 @@ const Unauthorized = () => {
 
               {/* Submit Button */}
               <div className="mt-4">
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Submit!</Button>
               </div>
             </form>
           </Frame>
