@@ -1,31 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Code, Cpu, Feather, Box, CircleUser } from "lucide-react";
+import { useGetSubmissionScoresByCategory } from "../../../apis/Submitions/getSubmissionScoresByCategory";
 
 export default function StatusPanel({ staticData }) {
   const [rank] = useState(() => {
     const savedRank = localStorage.getItem("teamRank");
     return savedRank ? parseInt(savedRank) : null;
   });
-  // Sample user data
+  const { data: submissionScores } = useGetSubmissionScoresByCategory(
+    staticData?.team?.teamId
+  );
+
+  const aiTotal =
+    submissionScores?.AI?.reduce((acc, value) => acc + value, 0) || 0;
+  const csTotal =
+    submissionScores?.CS?.reduce((acc, value) => acc + value, 0) || 0;
+  const psTotal =
+    submissionScores?.PS?.reduce((acc, value) => acc + value, 0) || 0;
+  const gdTotal =
+    submissionScores?.GD?.reduce((acc, value) => acc + value, 0) || 0;
 
   const userData = {
-    name: staticData.user.userName,
-    team: staticData?.team?.teamName,
+    name: staticData?.user?.userName,
     ranking: rank,
+    team: staticData?.team?.teamName,
     skills: {
-      cs: 50, // Computer Science
-      ai: 50, // Artificial Intelligence
-      ps: 50, // Problem Solving
-      gd: 50, // Graphic Design
-      ux: 50, // User Experience
+      cs: csTotal,
+      ai: aiTotal,
+      ps: psTotal,
+      gd: gdTotal,
     },
   };
 
-  // Calculate total points (average of skills)
+  // Fallback values for skills
+  userData.skills.cs = userData.skills.cs || 0;
+  userData.skills.ai = userData.skills.ai || 0;
+  userData.skills.ps = userData.skills.ps || 0;
+  userData.skills.gd = userData.skills.gd || 0;
+
+  // Calculate total points of all skills
   const totalPoints =
-    Object.values(userData.skills).reduce((sum, val) => sum + val, 0) /
-    Object.values(userData.skills).length;
+    userData.skills.cs +
+    userData.skills.ai +
+    userData.skills.ps +
+    userData.skills.gd;
+
+  // use effect for user data skills
+  useEffect(() => {
+    const updateSkills = () => {
+      userData.skills.cs = csTotal;
+      userData.skills.ai = aiTotal;
+      userData.skills.ps = psTotal;
+      userData.skills.gd = gdTotal;
+    };
+
+    updateSkills();
+  }, [csTotal, aiTotal, psTotal, gdTotal]);
 
   return (
     <div className="relative z-10 mx-auto w-[90%] max-w-full rounded-3xl p-8">
@@ -97,17 +128,7 @@ export default function StatusPanel({ staticData }) {
               </span>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <CircleUser className="mr-2 text-white" size={20} />
-                <span className="text-white">UX</span>
-              </div>
-              <span className="text-3xl font-light text-white glow-text">
-                {userData.skills.ux}
-              </span>
-            </div>
-
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between pt-5">
               <div className="text-right text-xs text-white opacity-70">
                 total
                 <br />
