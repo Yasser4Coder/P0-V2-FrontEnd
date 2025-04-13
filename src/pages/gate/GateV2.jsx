@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
 
 import img from "../../assets/images/boss.webp";
-import ChallengeCard from "./component/ChallengeCard";
 import bg from "../../assets/gif/scoreboard.webp";
+
+import ChallengeCard from "./component/ChallengeCard";
 import Frame from "../../components/Frame";
-import { useParams } from "react-router-dom";
 import API from "../../apis/axiosInstance";
+import useAuth from "../../hooks/useAuth";
+
 const fetchChallenges = async (wave) => {
   const { data } = await API.get(`challenges/wave/${wave}`);
   return data;
@@ -14,24 +17,40 @@ const fetchChallenges = async (wave) => {
 
 const GateV2 = () => {
   const { wave } = useParams();
+  const { auth } = useAuth();
+  const teamId = auth.team.teamId;
 
-  const {
-    data: gateChallenges = [],
-    isLoading,
-    error,
-  } = useQuery({
+  const [teamSubmissions, setTeamSubmissions] = useState([]);
+
+  const { data: gateChallenges = [], error } = useQuery({
     queryKey: ["challenges", wave],
     queryFn: () => fetchChallenges(wave),
     enabled: !!wave,
   });
 
-  if (isLoading) return <div className="text-white">Loading...</div>;
+  useEffect(() => {
+    const fetchSubmissionsByTeam = async () => {
+      try {
+        const { data } = await API.get(`submissions/team/${teamId}`);
+        setTeamSubmissions(data);
+      } catch (err) {
+        console.error("Failed to fetch submissions", err);
+      }
+    };
+    if (teamId) fetchSubmissionsByTeam();
+  }, [teamId]);
+
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
-  const solvedCount = gateChallenges.filter(
-    (challenge) => challenge.isSolved
-  ).length;
-  const revealPercentage = (solvedCount / gateChallenges.length) * 100;
+  // ✅ Get only solved submissions (status === "reviewed" and isSolved === true)
+  const solvedChallengeIds = teamSubmissions
+    .filter((sub) => sub.status === "reviewed" && sub.isSolved === true)
+    .map((sub) => sub.challengeId._id);
+
+  const revealPercentage =
+    gateChallenges.length > 0
+      ? (solvedChallengeIds.length / gateChallenges.length) * 100
+      : 0;
 
   return (
     <div>
@@ -49,20 +68,19 @@ const GateV2 = () => {
               challengeName={challenge.title}
               categorie={challenge.category}
               points={challenge.points}
-              // difficulty={challenge.difficulty}
-              solved={true}
+              solved={solvedChallengeIds.includes(challenge._id)}
               index={index + 1}
               to={`/submition/${challenge._id}`}
             />
           ))}
-          <div className="div6 relative rounded-2xl border-2 border-white overflow-hidden">
+          <div className="div5 relative rounded-2xl border-2 border-white overflow-hidden">
             <img src={img} alt="" className="rounded-2xl object-center" />
             <div
               className="absolute top-0 flex items-center justify-center right-0 h-full bg-[#02d6f2a8] transition-all duration-500"
               style={{ width: `${100 - revealPercentage}%` }}
             >
-              <div className="text-white text-4xl rotate-[-90deg] left-[65%] translate-x-[-50%] translate-y-[-50%]">
-                {revealPercentage}%
+              <div className="text-white text-4xl">
+                {Math.floor(revealPercentage)}%
               </div>
             </div>
           </div>

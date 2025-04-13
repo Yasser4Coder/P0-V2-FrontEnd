@@ -22,7 +22,7 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
   const navigate = useNavigate();
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
 
   useEffect(() => {
     setCharacter("left");
@@ -62,6 +62,7 @@ const Login = () => {
         team: userData?.team,
         user: userData?.user,
       });
+      console.log(auth);
       if (userRole === "1112") {
         navigate("/dashboard");
       } else {

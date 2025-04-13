@@ -24,10 +24,11 @@ const submitChallenge = async ({ id, formData, team }) => {
   if (formData.submissionText) {
     submission.append("submissionText", formData.submissionText);
   }
-
+  const storedAuth = localStorage.getItem("auth");
+  const authObj = JSON.parse(storedAuth);
   submission.append("challengeId", id);
   submission.append("teamId", team.teamId);
-
+  submission.append("userId", authObj.user.userId);
 
   try {
     const { data } = await API.post(`/submissions`, submission, {

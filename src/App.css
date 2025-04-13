@@ -62,20 +62,17 @@
 }
 
 .div1 {
-  grid-area: 1 / 10 / 6 / 15;
+  grid-area: 11 / 2 / 17 / 7;
 }
 .div2 {
-  grid-area: 3 / 19 / 8 / 24;
+  grid-area: 2 / 2 / 8 / 7;
 }
 .div3 {
-  grid-area: 11 / 19 / 16 / 24;
+  grid-area: 2 / 18 / 8 / 23;
 }
 .div4 {
-  grid-area: 3 / 1 / 8 / 6;
+  grid-area: 11 / 18 / 17 / 23;
 }
 .div5 {
-  grid-area: 11 / 1 / 16 / 6;
-}
-.div6 {
-  grid-area: 12 / 9 / 18 / 16;
+  grid-area: 6 / 10 / 12 / 15;
 }

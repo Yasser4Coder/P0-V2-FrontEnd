@@ -46,7 +46,7 @@ const Gates = () => {
                 open={false}
                 title={"igris: the red knight"}
                 gateNumber={2}
-                date="2025-04-15T14:00:00.000Z"
+                date="2025-04-24T14:00:00.000Z"
               />
             </div>
             <div className="flex w-[80%] gap-[30px]">
@@ -54,13 +54,13 @@ const Gates = () => {
                 open={false}
                 title={"igris: the red knight"}
                 gateNumber={3}
-                date="2025-04-15T16:00:00.000Z"
+                date="2025-04-24T16:00:00.000Z"
               />
               <GateCard
                 open={false}
                 title={"igris: the red knight"}
                 gateNumber={4}
-                date="2025-04-15T18:00:00.000Z"
+                date="2025-04-24T18:00:00.000Z"
               />
             </div>
           </Frame>

@@ -14,7 +14,6 @@ const ChallengeCard = ({
   to,
 }) => {
   const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
   const [delayedSolved, setDelayedSolved] = useState(false); // New state for delayed application
 
   const navigate = useNavigate();
@@ -23,15 +22,10 @@ const ChallengeCard = ({
       const timer = setTimeout(() => {
         setShow(true);
         setDelayedSolved(true); // Apply solved styles after delay
-      }, 2000);
-
-      const timer2 = setTimeout(() => {
-        setShow2(true);
-      }, 4500);
+      }, 3000);
 
       return () => {
         clearTimeout(timer);
-        clearTimeout(timer2);
       };
     }
   }, [solved]);
@@ -39,115 +33,101 @@ const ChallengeCard = ({
   return (
     <div
       className={`div${divNum} ${
-        delayedSolved &&
-        solved === true &&
-        (index === 1 || index === 3 || index === 5) &&
-        show === true
-          ? "blur-backgroundGateCard-green border-[#26CD87] drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
-          : delayedSolved &&
-            solved === true &&
-            (index === 2 || index === 4) &&
-            show2 === true
+        delayedSolved && solved === true && show === true
           ? "blur-backgroundGateCard-green border-[#26CD87] drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
           : "blur-backgroundGateCard border-white"
-      } font-sulphur min-h-[200px] relative rounded-2xl flex flex-col items-center justify-between py-[13px] px-[15px] border-3`}
+      } font-sulphur min-h-[200px] max-h-[250px] relative rounded-2xl flex flex-col items-center justify-between py-[13px] px-[15px] border-3`}
     >
+      {/* bg-[#26CD87] */}
       {index === 1 && (
-        <div className="absolute w-[5px] h-[124%] bg-white z-20 bottom-[-125%] overflow-hidden">
-          <motion.div
-            initial={{ height: "0%" }}
-            animate={solved ? { height: "100%" } : { height: "0%" }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute left-0 bottom-0 w-full bg-[#26CD87]"
-          ></motion.div>
-        </div>
-      )}
-
-      {index === 2 && (
-        <div className="absolute w-[174%] h-[83%] z-20 right-[44%] bottom-[-83%]">
-          {/* Left Vertical Bar (Fills First) */}
-          <div className="relative h-[68%] w-[5px] top-[33%] bg-white overflow-hidden">
+        <div className="absolute w-[98%] h-[34%] z-20 bottom-[50%] right-[-98.5%] overflow-hidden flex flex-col">
+          {/* Right vertical green bar */}
+          <div className="relative h-full w-[5px] bg-white overflow-hidden self-end">
             <motion.div
               initial={{ height: "0%" }}
               animate={solved ? { height: "100%" } : { height: "0%" }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 0 }}
-              className="absolute left-0 bottom-0 w-full bg-[#26CD87]"
-            ></motion.div>
+              className="absolute left-0 top-0 w-full bg-[#26CD87]"
+            />
           </div>
 
-          {/* Horizontal Bar (Fills Second) */}
-          <div className="relative h-[5px] w-full bottom-[37%] bg-white float-right overflow-hidden">
+          {/* Bottom horizontal green bar */}
+          <div className="relative h-[5px] w-full bg-white overflow-hidden mt-auto">
             <motion.div
               initial={{ width: "0%" }}
               animate={solved ? { width: "100%" } : { width: "0%" }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 1.5 }}
-              className="absolute left-0 top-0 h-full bg-[#26CD87]"
-            ></motion.div>
-          </div>
-
-          {/* Right Vertical Bar (Fills Last) */}
-          <div className="relative h-[30%] w-[5px] bottom-[70%] bg-white float-right overflow-hidden">
-            <motion.div
-              initial={{ height: "0%" }}
-              animate={solved ? { height: "100%" } : { height: "0%" }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 3 }}
-              className="absolute left-0 bottom-0 w-full bg-[#26CD87]"
-            ></motion.div>
+              className="absolute right-0 bottom-0 h-full bg-[#26CD87]"
+            />
           </div>
         </div>
       )}
-
-      {index === 3 && (
-        <div className="absolute h-[5px] w-[62%] bg-white z-20 bottom-[30%] left-[-62%] overflow-hidden">
-          <motion.div
-            initial={{ width: "0%" }}
-            animate={solved ? { width: "100%" } : { width: "0%" }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute left-0 top-0 h-full bg-[#26CD87]"
-          ></motion.div>
-        </div>
-      )}
-      {index === 4 && (
-        <div className="absolute w-[174%] h-[83%] z-20 left-[44%] bottom-[-83%]">
-          {/* Left Vertical Bar (Fills First) */}
-          <div className="relative h-[68%] w-[5px] top-[33%] float-right bg-white overflow-hidden">
-            <motion.div
-              initial={{ height: "0%" }}
-              animate={solved ? { height: "100%" } : { height: "0%" }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 0 }}
-              className="absolute left-0 bottom-0 w-full bg-[#26CD87]"
-            ></motion.div>
-          </div>
-
-          {/* Horizontal Bar (Fills Second) */}
-          <div className="relative h-[5px] w-full bottom-[37%] bg-white float-left overflow-hidden">
+      {index === 2 && (
+        <div className="absolute w-[98%] h-[47%] z-20 bottom-[15%] right-[-98.5%] overflow-hidden flex flex-col">
+          {/* Top horizontal green bar */}
+          <div className="relative h-[5px] w-full bg-white overflow-hidden">
             <motion.div
               initial={{ width: "0%" }}
               animate={solved ? { width: "100%" } : { width: "0%" }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 1.5 }}
               className="absolute right-0 top-0 h-full bg-[#26CD87]"
-            ></motion.div>
+            />
           </div>
-
-          {/* Right Vertical Bar (Fills Last) */}
-          <div className="relative h-[30%] w-[5px] bottom-[70%] bg-white float-left overflow-hidden">
+          {/* Right vertical green bar */}
+          <div className="relative h-full w-[5px] bg-white overflow-hidden self-end">
             <motion.div
               initial={{ height: "0%" }}
               animate={solved ? { height: "100%" } : { height: "0%" }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 3 }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0 }}
               className="absolute left-0 bottom-0 w-full bg-[#26CD87]"
-            ></motion.div>
+            />
           </div>
         </div>
       )}
-      {index === 5 && (
-        <div className="absolute h-[5px] w-[62%] bg-white z-20 bottom-[31%] right-[-62%] overflow-hidden">
-          <motion.div
-            initial={{ width: "0%" }}
-            animate={solved ? { width: "100%" } : { width: "0%" }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute right-0 top-0 h-full bg-[#26CD87]"
-          ></motion.div>
+      {index === 3 && (
+        <div className="absolute w-[98%] h-[47%] z-20 bottom-[15%] left-[-98.5%] overflow-hidden flex flex-col">
+          {/* Top horizontal green bar */}
+          <div className="relative h-[5px] w-full bg-white overflow-hidden">
+            <motion.div
+              initial={{ width: "0%" }}
+              animate={solved ? { width: "100%" } : { width: "0%" }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 1.5 }}
+              className="absolute left-0 top-0 h-full bg-[#26CD87]"
+            />
+          </div>
+
+          {/* Right vertical green bar */}
+          <div className="relative h-full w-[5px] bg-white overflow-hidden self-start">
+            <motion.div
+              initial={{ height: "0%" }}
+              animate={solved ? { height: "100%" } : { height: "0%" }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0 }}
+              className="absolute left-0 bottom-0 w-full bg-[#26CD87]"
+            />
+          </div>
+        </div>
+      )}
+      {index === 4 && (
+        <div className="absolute w-[98%] h-[34%] z-20 bottom-[50%] left-[-98.5%] overflow-hidden flex flex-col">
+          {/* Right vertical green bar */}
+          <div className="relative h-full w-[5px] bg-white overflow-hidden self-start">
+            <motion.div
+              initial={{ height: "0%" }}
+              animate={solved ? { height: "100%" } : { height: "0%" }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0 }}
+              className="absolute left-0 top-0 w-full bg-[#26CD87]"
+            />
+          </div>
+
+          {/* Bottom horizontal green bar */}
+          <div className="relative h-[5px] w-full bg-white overflow-hidden mt-auto">
+            <motion.div
+              initial={{ width: "0%" }}
+              animate={solved ? { width: "100%" } : { width: "0%" }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 1.5 }}
+              className="absolute left-0 bottom-0 h-full bg-[#26CD87]"
+            />
+          </div>
         </div>
       )}
 
@@ -159,13 +139,7 @@ const ChallengeCard = ({
         <p>points : {points}</p>
         <p>difficulty : {difficulty}</p>
       </div>
-      {solved === true &&
-      show === true &&
-      (index === 1 || index === 3 || index === 5) ? (
-        <div className="border-[1px] cursor-cell text-white border-white py-[5px] px-[10px]">
-          Solved
-        </div>
-      ) : solved === true && show2 === true && (index === 2 || index === 4) ? (
+      {solved === true && show === true ? (
         <div className="border-[1px] cursor-cell text-white border-white py-[5px] px-[10px]">
           Solved
         </div>
