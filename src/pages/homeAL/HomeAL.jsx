@@ -72,7 +72,17 @@ const HomeAL = () => {
     }
   };
 
-  if (loading) return <p className="text-gray-600">Loading...</p>;
+  if (loading)
+    return (
+      <div className="flex flex-col h-[80vh] bg-amber-100 items-center justify-center w-full mt-[30px]">
+        <img
+          src={fixBg}
+          alt="background"
+          className="z-0 fixed w-full h-full bg-center bg-cover top-0 left-0 object-cover"
+        />
+        <span class="loader"></span>
+      </div>
+    );
 
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[30px]">

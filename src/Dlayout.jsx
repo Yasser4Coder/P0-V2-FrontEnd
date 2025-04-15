@@ -1,10 +1,23 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
-import { Award, Users, Eye, Bell, Search } from "lucide-react";
+import {
+  Award,
+  Users,
+  Bell,
+  Home,
+  ShieldUser,
+  ShieldQuestion,
+  Refrigerator,
+  ClipboardPlus,
+  BookMarked,
+  ArrowUpWideNarrow,
+} from "lucide-react";
+import Notification from "./components/Notification";
 
 const Dlayout = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-100">
+      <Notification hidden={true} />
       <header className="bg-blue-600 text-white p-4 shadow-md">
         <h1 className="text-2xl font-bold">P0 Platform Dashboard</h1>
       </header>
@@ -15,14 +28,14 @@ const Dlayout = () => {
               to="/dashboard"
               className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
             >
-              <Award className="w-5 h-5" />
+              <Home className="w-5 h-5" />
               <span>home</span>
             </Link>
             <Link
               to="/dashboard/teams"
               className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
             >
-              <Award className="w-5 h-5" />
+              <ShieldUser className="w-5 h-5" />
               <span>Teams</span>
             </Link>
 
@@ -33,19 +46,40 @@ const Dlayout = () => {
               <Users className="w-5 h-5" />
               <span>Users</span>
             </Link>
+            <Link
+              to="/dashboard/usersrank"
+              className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
+            >
+              <ArrowUpWideNarrow className="w-5 h-5" />
+              <span>Users Rank</span>
+            </Link>
+            <Link
+              to="/dashboard/mentors"
+              className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
+            >
+              <ShieldQuestion className="w-5 h-5" />
+              <span>Mentors Calls</span>
+            </Link>
+            <Link
+              to="/dashboard/needs"
+              className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
+            >
+              <Refrigerator className="w-5 h-5" />
+              <span>Users Needs</span>
+            </Link>
 
             <Link
               to="/dashboard/challenges"
               className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
             >
-              <Award className="w-5 h-5" />
+              <ClipboardPlus className="w-5 h-5" />
               <span>Add Challenges</span>
             </Link>
             <Link
               to="/dashboard/getAllChallenges"
               className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
             >
-              <Award className="w-5 h-5" />
+              <BookMarked className="w-5 h-5" />
               <span>All Challenges</span>
             </Link>
 
@@ -53,7 +87,7 @@ const Dlayout = () => {
               to="/dashboard/submissions"
               className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
             >
-              <Eye className="w-5 h-5" />
+              <Award className="w-5 h-5" />
               <span>Submissions</span>
             </Link>
 

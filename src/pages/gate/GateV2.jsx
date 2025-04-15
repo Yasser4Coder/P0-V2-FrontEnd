@@ -22,7 +22,11 @@ const GateV2 = () => {
 
   const [teamSubmissions, setTeamSubmissions] = useState([]);
 
-  const { data: gateChallenges = [], error } = useQuery({
+  const {
+    data: gateChallenges = [],
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ["challenges", wave],
     queryFn: () => fetchChallenges(wave),
     enabled: !!wave,
@@ -40,6 +44,23 @@ const GateV2 = () => {
     if (teamId) fetchSubmissionsByTeam();
   }, [teamId]);
 
+  if (isLoading)
+    return (
+      <div>
+        <img
+          src={bg}
+          alt=""
+          className="z-0 fixed w-full h-full bg-center top-0 left-0 bg-contain"
+        />
+        <Frame
+          extraEdit={
+            "py-[20px] flex items-center justify-center h-[80vh] px-[40px] mt-[40px]"
+          }
+        >
+          <span class="loader"></span>
+        </Frame>
+      </div>
+    );
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   // ✅ Get only solved submissions (status === "reviewed" and isSolved === true)
@@ -75,14 +96,17 @@ const GateV2 = () => {
           ))}
           <div className="div5 relative rounded-2xl border-2 border-white overflow-hidden">
             <img src={img} alt="" className="rounded-2xl object-center" />
+            {Math.floor(revealPercentage) === 100 ? (
+              ""
+            ) : (
+              <div className="text-white absolute top-[50%] z-20 left-[50%] translate-x-[-50%] translate-y-[-50%] text-4xl">
+                {Math.floor(revealPercentage)}%
+              </div>
+            )}
             <div
               className="absolute top-0 flex items-center justify-center right-0 h-full bg-[#02d6f2a8] transition-all duration-500"
               style={{ width: `${100 - revealPercentage}%` }}
-            >
-              <div className="text-white text-4xl">
-                {Math.floor(revealPercentage)}%
-              </div>
-            </div>
+            ></div>
           </div>
         </div>
       </Frame>

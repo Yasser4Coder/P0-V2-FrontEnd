@@ -5,7 +5,7 @@ import { Howl } from "howler";
 import img from "../assets/images/003.png";
 import { IoCloseCircle } from "react-icons/io5";
 
-const Notification = () => {
+const Notification = ({ hidden }) => {
   const [notification, setNotification] = useState(() => {
     return localStorage.getItem("notification") || "";
   });
@@ -22,7 +22,7 @@ const Notification = () => {
 
   const sound = new Howl({
     src: [not],
-    volume: 1.0,
+    volume: hidden === true ? 0 : 1.0,
   });
 
   useEffect(() => {
@@ -46,7 +46,11 @@ const Notification = () => {
 
   return (
     notification && (
-      <div className="fixed z-50 nt-ltr bottom-[10%] right-[5%] shadow-lg transition-opacity duration-300">
+      <div
+        className={`${
+          hidden === true ? "hidden" : "fixed"
+        } z-50 nt-ltr bottom-[10%] right-[5%] shadow-lg transition-opacity duration-300`}
+      >
         <div className="relative min-w-[300px] min-h-[80px]">
           <img
             src={img}

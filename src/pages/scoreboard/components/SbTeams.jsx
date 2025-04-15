@@ -71,7 +71,7 @@ const SbTeams = () => {
   };
 
   if (isLoading || !teams.length) {
-    return <p className="text-white text-center">Loading...</p>;
+    return <span class="loader"></span>;
   }
   if (error) {
     return <p className="text-red-500 text-center">Error loading teams</p>;

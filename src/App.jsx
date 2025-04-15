@@ -27,6 +27,9 @@ import Timer from "./pages/timer/Timer";
 import HomeAL from "./pages/homeAL/HomeAL";
 import SubmisionPage from "./pages/challenge/SubmissionPage";
 import GetAllChallenges from "./pages/dashboard/getAllChallenges";
+import MentorsCalls from "./pages/dashboard/MentorsCalls";
+import Needs from "./pages/dashboard/Needs";
+import UsersRank from "./pages/dashboard/UsersRank";
 const queryClient = new QueryClient();
 
 function App() {
@@ -67,6 +70,9 @@ function App() {
               <Route path="notifications" element={<NotificationsTab />} />
               <Route path="teams" element={<Teams />} />
               <Route path="getAllChallenges" element={<GetAllChallenges />} />
+              <Route path="mentors" element={<MentorsCalls />} />
+              <Route path="needs" element={<Needs />} />
+              <Route path="usersrank" element={<UsersRank />} />
 
               <Route path="404" element={<NotFound />} />
               <Route path="*" element={<Navigate to="/404" replace />} />
