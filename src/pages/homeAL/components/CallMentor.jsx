@@ -13,20 +13,17 @@ const CallMentor = () => {
 
   const { auth } = useAuth();
 
-  const status = "mentor";
-
   useEffect(() => {
     if (auth?.user?.userId && auth?.team?.teamId) {
       setValue("userId", auth.user.userId);
       setValue("teamId", auth.team.teamId);
-      setValue("status", status);
+      setValue("status", "mentor");
     }
   }, [auth, setValue]);
 
   const { mutate: callMentor } = useCallMentor();
 
   const onSubmit = (data) => {
-    console.log("Form submitted:", data);
     callMentor(data, {
       onSuccess: () => {
         console.log("Mentor request sent successfully");

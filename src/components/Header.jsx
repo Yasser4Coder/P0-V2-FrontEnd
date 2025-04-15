@@ -4,8 +4,9 @@ import login from "../assets/images/Login.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
 import useAuth from "../hooks/useAuth";
-
+import { useUnreadAnnouncements } from "../contexts/UnreadAnnouncementsContext";
 const Header = () => {
+  const { unreadCount } = useUnreadAnnouncements();
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
@@ -29,7 +30,14 @@ const Header = () => {
             <Link to={auth?.user?.userName ? "/home" : "/"}>Home</Link>
             <Link to={"/scoreboard"}>Scoreboard</Link>
             <Link to={"/gates"}>Gates</Link>
-            <Link to={"/announcement"}>Announcements</Link>
+            <Link to={"/announcement"} className=" relative">
+              Announcements{" "}
+              {unreadCount > 0 && (
+                <span className="text-white bg-red-500 rounded-full px-2 ml-2">
+                  {unreadCount}
+                </span>
+              )}
+            </Link>
             <Link to={"/status"}>Status</Link>
             <Link to={"/timer"}>Timer</Link>
           </div>
