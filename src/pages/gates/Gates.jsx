@@ -43,24 +43,25 @@ const Gates = () => {
                 gateNumber={1}
               />
               <GateCard
-                open={false}
+                open={true}
                 title={"igris: the red knight"}
+                desc="The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges. But before that, you have to choose your character in the team."
                 gateNumber={2}
-                date="2025-04-24T14:00:00.000Z"
+                // date="2025-04-24T14:00:00.000Z"
               />
             </div>
             <div className="flex w-[80%] gap-[30px]">
               <GateCard
-                open={false}
+                open={true}
                 title={"igris: the red knight"}
                 gateNumber={3}
-                date="2025-04-24T16:00:00.000Z"
+                // date="2025-04-24T16:00:00.000Z"
               />
               <GateCard
-                open={false}
+                open={true}
                 title={"igris: the red knight"}
                 gateNumber={4}
-                date="2025-04-24T18:00:00.000Z"
+                // date="2025-04-24T18:00:00.000Z"
               />
             </div>
           </Frame>

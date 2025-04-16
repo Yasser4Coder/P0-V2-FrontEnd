@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import exclamation from "../../../assets/icons/exclamation.svg";
-import RedKnight from "../../../assets/images/boss.webp";
+import RedKnight from "../../../assets/images/boss1.jpg";
+import Kargalgan from "../../../assets/gif/Kargalgan.webp";
+import igrit from "../../../assets/gif/igritImg.webp";
+import Baran from "../../../assets/gif/Baran1.jpg";
 import { useNavigate } from "react-router-dom";
 
 const GateCard = ({ title, desc, open, gateNumber, date }) => {
@@ -8,7 +11,6 @@ const GateCard = ({ title, desc, open, gateNumber, date }) => {
 
   const targetDate = new Date(date).getTime();
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
-
   useEffect(() => {
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -32,10 +34,26 @@ const GateCard = ({ title, desc, open, gateNumber, date }) => {
     return () => clearInterval(interval);
   }, [targetDate]);
 
+  const handleClick = () => {
+    navigate(`/gate/${gateNumber}`);
+  };
+
   return (
     <div className="min-h-[320px] w-full relative overflow-hidden">
-      <div className=" absolute rounded-3xl overflow-hidden w-full h-full">
-        <img src={RedKnight} alt="" className="rounded-3xl object-center" />
+      <div className="absolute rounded-3xl overflow-hidden w-full h-full">
+        <img
+          src={
+            gateNumber === 1
+              ? igrit
+              : gateNumber === 2
+              ? Kargalgan
+              : gateNumber === 3
+              ? Baran
+              : RedKnight
+          }
+          alt=""
+          className="rounded-3xl h-full w-full object-cover object-center"
+        />
       </div>
       {open === true ? (
         <div className="blur-backgroundGateCard mb-[30px] border-white border-2 rounded-[20px] p-[25px] flex flex-col items-center h-full">
@@ -86,7 +104,7 @@ const GateCard = ({ title, desc, open, gateNumber, date }) => {
           </div>
           <p className="text-white text-center mt-[25px] text-lg">{desc}</p>
           <button
-            onClick={() => navigate(`/gate/${gateNumber}`)} // التنقل حسب رقم البوابة
+            onClick={handleClick}
             className={`border-[1px] mt-[25px] text-white border-white font-sulphur text-center p-[15px] flex items-center justify-center cursor-pointer lg:text-xl
               md:text-lg
               sm:text-md
