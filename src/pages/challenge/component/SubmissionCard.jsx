@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import API from "../../../apis/axiosInstance";
 import Frame from "../../../components/Frame";
@@ -8,6 +8,8 @@ import Peragraph from "../../../components/Peragraph";
 import WarningTitle from "../../../components/WorningTitle";
 import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
+import { BiSolidLeftArrow } from "react-icons/bi";
+import { Navigate } from "react-router-dom";
 
 const fetchChallengeById = async (id) => {
   const { data } = await API.get(`/challenges/${id}`);
@@ -62,7 +64,7 @@ const SubmissionCard = ({
     queryFn: () => fetchChallengeById(id),
     enabled: !!id,
   });
-
+  const navigate = useNavigate();
   const { auth } = useAuth();
   const team = auth.team;
 
@@ -139,8 +141,13 @@ const SubmissionCard = ({
         icon={false}
         title={challenge.title || name}
       />
-
-      {/* Status messages */}
+      <div
+        onClick={() => navigate(-1)}
+        className="absolute top-[30px] left-[30px] cursor-pointer drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
+      >
+        <BiSolidLeftArrow className="text-2xl sm:text-[3rem] text-white" />
+      </div>
+      ;{/* Status messages */}
       {isSuccess && (
         <div className="w-full bg-green-500 text-white p-4 rounded">
           Submission successful!
@@ -151,23 +158,27 @@ const SubmissionCard = ({
           Error: {submissionError?.message || "Failed to submit challenge"}
         </div>
       )}
-
       {/* وصف التحدي */}
       <div className="w-full">
-        <Peragraph className="text-start text-xl font-medium text-white">
+        <Peragraph extraStyle={"font-bold underline"}>
           Challenge Script:
         </Peragraph>
-        <div className="space-y-4 text-base text-white">
-          <Peragraph
-            tracking="tracking-[0.12rem]"
-            leading="leading-[2.2rem]"
-            text="text-md sm:text-xl"
-          >
+        <div className="space-y-4 mt-[20px] text-base text-white">
+          <pre className="whitespace-pre-wrap text-xl break-words overflow-auto">
             {challenge.description || description}
-          </Peragraph>
+          </pre>
         </div>
       </div>
-
+      <div className="w-full">
+        <Peragraph extraStyle={"font-bold underline"}>
+          Challenge Hints:
+        </Peragraph>
+        <div className="space-y-4 mt-[20px] text-base text-white">
+          <pre className="whitespace-pre-wrap text-xl break-words overflow-auto">
+            {challenge.hints || ""}
+          </pre>
+        </div>
+      </div>
       {/* زر تحميل الملف المطلوب */}
       <div className="w-full flex flex-col items-start">
         <Peragraph className="text-xl font-medium text-white">
@@ -196,10 +207,8 @@ const SubmissionCard = ({
           <div className="text-red-500">No file available</div>
         )}
       </div>
-
       {/* خط فاصل */}
       <div className="w-full p-[1px] bg-white"></div>
-
       {/* رفع الملف */}
       <div className="w-full flex flex-col items-start">
         <Peragraph className="text-xl font-medium text-white">
@@ -225,7 +234,6 @@ const SubmissionCard = ({
         )}
         {fileError && <p className="text-red-500 mt-2">{fileError}</p>}
       </div>
-
       {/* إدخال نص التقديم */}
       <div className="w-full flex flex-col items-start">
         <Peragraph className="text-xl font-medium text-white">
@@ -240,7 +248,6 @@ const SubmissionCard = ({
           />
         </div>
       </div>
-
       {/* زر الإرسال */}
       <div className="flex justify-center mt-6">
         <button

@@ -1,6 +1,6 @@
 import Frame from "../../components/Frame";
 import WarningTitle from "../../components/WorningTitle";
-import bg from "../../assets/gif/scoreboard.webp";
+import bg from "../../assets/gif/scoreboard1.gif";
 import { useEffect, useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";

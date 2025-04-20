@@ -127,6 +127,18 @@ const SubmissionsTab = () => {
               </th>
               <th
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer"
+                onClick={() => sortData("challenge")}
+              >
+                Category
+              </th>
+              <th
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer"
+                onClick={() => sortData("challenge")}
+              >
+                Gate
+              </th>
+              <th
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer"
                 onClick={() => sortData("date")}
               >
                 Date
@@ -170,6 +182,12 @@ const SubmissionsTab = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {submission.challengeId?.title || "Unknown"}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {submission.challengeId?.category || "Unknown"}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {submission.challengeId?.wave || "Unknown"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {formatDate(submission.createdAt)}

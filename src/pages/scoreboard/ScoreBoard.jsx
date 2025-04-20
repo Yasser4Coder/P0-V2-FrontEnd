@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Frame from "../../components/Frame";
-import bg from "../../assets/gif/scoreboard.webp";
+import bg from "../../assets/gif/scoreboard1.gif";
 
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";

@@ -10,7 +10,7 @@ const Peragraph = ({
   leading = "tracking-[0.4rem]",
 }) => {
   return (
-    <p
+    <pre
       className={`${
         error === true
           ? "text-red-500"
@@ -20,7 +20,7 @@ const Peragraph = ({
       } font-sulphur ${tracking} ${leading}  ${extraStyle} text-center ${text}`}
     >
       {children}
-    </p>
+    </pre>
   );
 };
 

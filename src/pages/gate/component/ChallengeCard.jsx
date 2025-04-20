@@ -135,7 +135,16 @@ const ChallengeCard = ({
         {challengeName}
       </h1>
       <div className="w-full tracking-[0.1rem] text-white">
-        <p>categorie: {categorie}</p>
+        <p>
+          categorie:{" "}
+          {categorie === "PS"
+            ? "Problem Solving"
+            : categorie === "GD"
+            ? "Graphic Design"
+            : categorie === "CS"
+            ? "Cyber Security"
+            : categorie}
+        </p>
         <p>points : {points}</p>
         <p>difficulty : {difficulty}</p>
       </div>

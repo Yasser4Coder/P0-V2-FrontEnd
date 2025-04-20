@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { BiSolidLeftArrow } from "react-icons/bi";
+
 // igritGif
 import igrit from "../../assets/bgs/gates/igrit.webp";
 import igritGif from "../../assets/gif/igrit.gif";
@@ -39,6 +41,7 @@ const GateV2 = () => {
   const teamId = auth.team.teamId;
   const [showGif, setShowGif] = useState(true);
   const [showFixBg, setShowFixBg] = useState(false);
+  const navigate = useNavigate();
 
   const [teamSubmissions, setTeamSubmissions] = useState([]);
 
@@ -143,6 +146,13 @@ const GateV2 = () => {
           transition={{ duration: 0.8, ease: "easeOut" }} // Smooth animation
         >
           <Frame extraEdit={"py-[20px] px-[40px] mt-[40px]"}>
+            <div
+              onClick={() => navigate(-1)}
+              className="absolute top-[30px] left-[30px] cursor-pointer drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
+            >
+              <BiSolidLeftArrow className="text-2xl sm:text-[3rem] text-white" />
+            </div>
+            ;
             <div className="relative z-10 mt-[20px] max-h-[900px] h-[88vh] parent">
               {gateChallenges?.map((challenge, index) => (
                 <ChallengeCard
