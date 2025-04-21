@@ -93,7 +93,7 @@ const SubmissionCard = ({
 
   const validateFile = (file) => {
     // Add file validation if needed
-    const maxSize = 10 * 1024 * 1024; // 10MB
+    const maxSize = 200 * 1024 * 1024; // 200MB
     if (file && file.size > maxSize) {
       return "File size exceeds 10MB limit";
     }
@@ -141,23 +141,6 @@ const SubmissionCard = ({
         icon={false}
         title={challenge.title || name}
       />
-      <div
-        onClick={() => navigate(-1)}
-        className="absolute top-[30px] left-[30px] cursor-pointer drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
-      >
-        <BiSolidLeftArrow className="text-2xl sm:text-[3rem] text-white" />
-      </div>
-      ;{/* Status messages */}
-      {isSuccess && (
-        <div className="w-full bg-green-500 text-white p-4 rounded">
-          Submission successful!
-        </div>
-      )}
-      {isError && (
-        <div className="w-full bg-red-500 text-white p-4 rounded">
-          Error: {submissionError?.message || "Failed to submit challenge"}
-        </div>
-      )}
       {/* وصف التحدي */}
       <div className="w-full">
         <Peragraph extraStyle={"font-bold underline"}>
@@ -224,10 +207,14 @@ const SubmissionCard = ({
         <input
           id="fileInput"
           type="file"
+          name={challenge.category === "AI" ? "submissionFile" : "file"} // Conditional name based on category
           className="hidden"
-          {...register("submissionFile", {
-            onChange: handleFileChange,
-          })}
+          {...register(
+            challenge.category === "AI" ? "submissionFile" : "file",
+            {
+              onChange: handleFileChange, // handleFileChange will manage file selection
+            }
+          )}
         />
         {fileName && !fileError && (
           <p className="text-green-400 mt-2">File selected: {fileName}</p>
@@ -262,6 +249,23 @@ const SubmissionCard = ({
           {isPending ? "SUBMITTING..." : "SUBMIT"}
         </button>
       </div>
+      <div
+        onClick={() => navigate(-1)}
+        className="absolute top-[30px] left-[30px] cursor-pointer drop-shadow-[0_0_10px_rgba(255,255,200,0.8)]"
+      >
+        <BiSolidLeftArrow className="text-2xl sm:text-[3rem] text-white" />
+      </div>
+      ;{/* Status messages */}
+      {isSuccess && (
+        <div className="w-full bg-green-500 text-white p-4 rounded">
+          Submission successful!
+        </div>
+      )}
+      {isError && (
+        <div className="w-full bg-red-500 text-white p-4 rounded">
+          Error: {submissionError?.message || "Failed to submit challenge"}
+        </div>
+      )}
     </Frame>
   );
 };

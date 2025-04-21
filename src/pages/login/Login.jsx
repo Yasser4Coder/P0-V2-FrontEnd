@@ -11,6 +11,7 @@ import Button from "../../components/Button";
 import Peragraph from "../../components/Peragraph";
 import API from "../../apis/axiosInstance";
 import useAuth from "../../hooks/useAuth";
+import Loader from "../../components/Loader";
 
 const Login = () => {
   const [showFrame, setShowFrame] = useState(false);
@@ -20,6 +21,8 @@ const Login = () => {
   const [dark, setDark] = useState(false);
   const [start, setStart] = useState(false);
   const [error, setError] = useState(false);
+  const [loadingComplete, setLoadingComplete] = useState(false);
+
   const [errorMassage, setErrorMassage] = useState("");
   const navigate = useNavigate();
   const { setAuth, auth } = useAuth();
@@ -62,19 +65,13 @@ const Login = () => {
         team: userData?.team,
         user: userData?.user,
       });
-      console.log(auth);
       if (userRole === "1112") {
         navigate("/dashboard");
       } else {
         setShowFrame(false);
         setCharacter("center");
-        setTimeout(() => {
-          setStart(true);
-          setDark(true);
-          setTimeout(() => {
-            navigate("/welcome");
-          }, 2000);
-        }, 1000);
+        setStart(true);
+        setDark(true);
       }
     } catch (err) {
       setError(true);
@@ -90,8 +87,11 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center w-full mt-[40px]">
       <BackGround character={character} todark={dark} />
       {start && (
-        <div className="text-white fixed top-[50%] left-[50%] translate-x-[-50%] z-30 translate-y-[-50%] font-sulphur leading-[2.5rem] text-center text-2xl tracking-[0.4rem]">
-          Starting...
+        <div>
+          {!loadingComplete && (
+            <Loader onFinish={() => setLoadingComplete(true)} />
+          )}
+          {loadingComplete && navigate("/welcome")}
         </div>
       )}
       {showFrame && (

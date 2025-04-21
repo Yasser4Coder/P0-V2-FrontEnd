@@ -9,28 +9,28 @@ import GateCard from "./components/GateCard";
 const initialGates = [
   {
     open: false,
-    date: "2025-04-16T11:24:40.000Z",
+    date: "2025-04-19T11:24:40.000Z",
     number: 1,
     title: "Igris: The Red Knight",
     desc: "The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges.",
   },
   {
-    open: false,
-    date: "2025-04-16T11:24:40.000Z",
+    open: true,
+    date: "2025-04-19T11:24:40.000Z",
     number: 2,
     title: "Igris: The Red Knight",
     desc: "The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges.",
   },
   {
     open: false,
-    date: "2025-04-24T16:00:00.000Z",
+    date: "2025-04-19T16:00:00.000Z",
     number: 3,
     title: "Igris: The Red Knight",
     desc: "The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges.",
   },
   {
     open: false,
-    date: "2025-04-24T18:00:00.000Z",
+    date: "2025-04-19T18:00:00.000Z",
     number: 4,
     title: "Igris: The Red Knight",
     desc: "The system is activated. Discover the challenges waiting for you in the gates. You will play against time and hard challenges.",

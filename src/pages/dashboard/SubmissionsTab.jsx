@@ -149,6 +149,9 @@ const SubmissionsTab = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                 Submitted Link
               </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Acuurancy (AI)
+              </th>
               <th
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer"
                 onClick={() => sortData("status")}
@@ -219,6 +222,9 @@ const SubmissionsTab = () => {
                   <div className="absolute left-0 top-full mt-1 hidden group-hover:block bg-gray-700 text-white text-xs rounded px-2 py-1 z-10">
                     Click to copy
                   </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {submission.accuracy + "%" || "Its not AI"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span
