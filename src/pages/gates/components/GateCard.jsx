@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import exclamation from "../../../assets/icons/exclamation.svg";
 import RedKnight from "../../../assets/images/boss1.jpg";
-import Kargalgan from "../../../assets/gif/Kargalgan.webp";
+import Kargalgan from "../../../assets/gif/Kargalgan.png";
 import igrit from "../../../assets/gif/igritImg.webp";
 import Baran from "../../../assets/gif/Baran1.jpg";
 import { useNavigate } from "react-router-dom";
