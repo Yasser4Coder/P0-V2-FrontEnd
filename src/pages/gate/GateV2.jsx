@@ -11,7 +11,7 @@ import igritGif from "../../assets/gif/igrit.gif";
 
 // kargalgan
 
-import kargalgan from "../../assets/gif/Kargalgan.png";
+import kargalgan from "./../../assets/gif/kargalgan.png";
 import kargalganGif from "../../assets/gif/kargalganGif.gif";
 
 // Baran
