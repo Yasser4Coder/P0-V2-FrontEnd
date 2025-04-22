@@ -3,7 +3,7 @@ import axios from "axios";
 // http://localhost:6010/api local version
 
 const API = axios.create({
-  baseURL: "https://p0-api-yatg.onrender.com/api",
+  baseURL: " http://localhost:6010/api",
   withCredentials: true, // 🔥 Ensures cookies (token) are sent with requests
 });
 

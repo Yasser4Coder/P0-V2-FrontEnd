@@ -67,6 +67,13 @@ const Dlayout = () => {
               <Refrigerator className="w-5 h-5" />
               <span>Users Needs</span>
             </Link>
+            <Link
+              to="/dashboard/allchallenges"
+              className="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-700"
+            >
+              <Refrigerator className="w-5 h-5" />
+              <span>All challanges</span>
+            </Link>
 
             <Link
               to="/dashboard/challenges"
