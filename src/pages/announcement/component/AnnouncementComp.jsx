@@ -33,7 +33,7 @@ const AnnouncementComp = () => {
           text="text-md sm:text-xl"
         >
           <strong>No announcements yet.</strong> Stay tuned — you'll receive a
-          notification as soon as a new announcement is posted.
+          notification <br /> as soon as a new announcement is posted.
         </Peragraph>
       </Frame>
     );
