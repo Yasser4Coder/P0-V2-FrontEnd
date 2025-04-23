@@ -129,7 +129,7 @@ const GateV2 = () => {
             wave == 1
               ? igrit
               : wave == 2
-              ? kargalgan
+              ? "https://mrwallpaper.com/images/high/kargalgan-sung-jin-woo-s-shadow-army-l1r4vkcecir5rcue.webp"
               : wave == 3
               ? Baran
               : AntKing
@@ -172,7 +172,7 @@ const GateV2 = () => {
                     wave == 1
                       ? igrit
                       : wave == 2
-                      ? kargalgan
+                      ? "https://mrwallpaper.com/images/high/kargalgan-sung-jin-woo-s-shadow-army-l1r4vkcecir5rcue.webp"
                       : wave == 3
                       ? Baran1
                       : AntKing1
