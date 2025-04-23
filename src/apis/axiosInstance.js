@@ -3,7 +3,7 @@ import axios from "axios";
 // http://localhost:6010/api local version
 
 const API = axios.create({
-  baseURL: "http://62.171.145.207:5000/api/",
+  baseURL: "https://89ad-105-235-136-158.ngrok-free.app/api/",
   withCredentials: true, // 🔥 Ensures cookies (token) are sent with requests
 });
 
