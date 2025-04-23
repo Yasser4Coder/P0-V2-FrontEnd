@@ -11,7 +11,6 @@ const AddChallengeForm = () => {
   const [file, setFile] = useState(null);
 
   const onSubmit = async (data) => {
-    console.log("data ch",data)
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("description", data.description);
@@ -21,7 +20,6 @@ const AddChallengeForm = () => {
     formData.append("attachmentFile", file);
     formData.append("wave", data.wave);
 
-
     try {
       const response = await fetch("http://localhost:6010/api/challenges", {
         method: "POST",
@@ -30,7 +28,6 @@ const AddChallengeForm = () => {
       });
 
       const textResponse = await response.text(); // استلام الاستجابة على شكل نص
-      console.log("Response Text:", textResponse);
 
       // الآن إذا كانت الاستجابة بنجاح، نحاول تحويلها إلى JSON
       if (response.ok) {

@@ -11,7 +11,7 @@ import igritGif from "../../assets/gif/igrit.gif";
 
 // kargalgan
 
-import kargalgan from "../../assets/gif/Baran.webp";
+import kargalgan from "../../assets/gif/kargalgan.png";
 import kargalganGif from "../../assets/gif/kargalganGif.gif";
 
 // Baran
@@ -38,7 +38,7 @@ const fetchChallenges = async (wave) => {
 const GateV2 = () => {
   const { wave } = useParams();
   const { auth } = useAuth();
-  const teamId = auth.team.teamId;
+  const teamId = auth?.team?.teamId;
   const [showGif, setShowGif] = useState(true);
   const [showFixBg, setShowFixBg] = useState(false);
   const navigate = useNavigate();
@@ -180,13 +180,6 @@ const GateV2 = () => {
                   alt=""
                   className="rounded-3xl h-full w-full object-cover object-center"
                 />
-                {Math.floor(revealPercentage) === 100 ? (
-                  ""
-                ) : (
-                  <div className="text-white absolute top-[50%] z-20 left-[50%] translate-x-[-50%] translate-y-[-50%] text-4xl">
-                    {Math.floor(revealPercentage)}%
-                  </div>
-                )}
                 <div
                   className="absolute top-0 flex items-center justify-center right-0 h-full bg-[#02d6f2a8] transition-all duration-500"
                   style={{ width: `${100 - revealPercentage}%` }}
