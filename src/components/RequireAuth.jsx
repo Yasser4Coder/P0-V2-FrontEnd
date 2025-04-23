@@ -9,7 +9,7 @@ const RequireAuth = ({ allowedRoles }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
-    API.get("/auth/auth-check")
+    API.get("auth/auth-check")
       .then(() => setIsAuthenticated(true))
       .catch(() => setIsAuthenticated(false));
   }, [setAuth]);
